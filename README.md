@@ -4,3 +4,7 @@
 
 - 사이트: https://heungbu-book-quiz.netlify.app
 - 수정 후 main에 올리면 Netlify가 자동으로 다시 배포합니다.
+
+## 함께 들어 있는 퀴즈
+
+- `diary-vs-game/` — 일기장 쟁탈전(개항기 선생님 vs 학급 대결). 사이트: https://historydiarygamefinal.netlify.app
