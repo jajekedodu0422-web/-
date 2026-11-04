@@ -2,6 +2,7 @@
 
 다섯 모둠이 QR로 일기장 한 장씩을 맡아 되살리고, 받은 글자(외·세·의·간·섭)를 모아 '외세의 간섭'을 완성하는 게임.
 
-- 주소: https://gojong-diary-3-6.netlify.app (선생님 화면 = 첫 화면, 모둠 화면 = QR 주소)
+- 주소: https://heungbu-book-quiz.netlify.app/diary-group/ (선생님 화면 = 첫 화면, 모둠 화면 = QR 주소)
+- 예비 주소: https://gojong-diary-3-6.netlify.app (Netlify에서 이 폴더를 연결하면 사용 가능)
 - Netlify 프로젝트 `gojong-diary-3-6`이 이 폴더(`diary-group`)를 기준 폴더로 연결해 배포합니다.
 - 이 폴더의 파일을 고쳐 main에 올리면 Netlify가 자동으로 다시 배포합니다.
