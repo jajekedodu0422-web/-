@@ -7,4 +7,5 @@
 
 ## 함께 들어 있는 퀴즈
 
-- `diary-vs-game/` — 일기장 쟁탈전(개항기 선생님 vs 학급 대결). 사이트: https://historydiarygamefinal.netlify.app
+- `diary-vs-game/` — 일기장 쟁탈전(개항기 선생님 vs 학급 대결). 주소: https://heungbu-book-quiz.netlify.app/diary-vs-game/
+- `diary-class/` — 고종의 찢어진 일기장 학급판(반 고르기, 반별 기록판). 주소: https://heungbu-book-quiz.netlify.app/diary-class/
