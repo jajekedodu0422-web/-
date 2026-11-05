@@ -664,7 +664,7 @@ function renderDone(){
   addRecord(100);if(!S.recAt){var rr=loadRec();S.recAt=rr.length?rr[rr.length-1].at:0;save()}
   app.innerHTML='<div class="fade" style="display:grid;gap:16px;padding-top:2vh"><div class="eyebrow" style="color:var(--candle)">일기장 완성</div><h1>왕의 30년이<br>다시 묶였다</h1>'+
    '<div class="sheet"><div class="row" style="justify-content:space-between;align-items:flex-start"><div><div class="note" style="color:#6b5a44">남은 시간 (많을수록 빠름)</div><div class="big">'+fmt(remain())+'</div></div><div class="stamp">완<br>성</div></div>'+
-   '<dl class="meta"><dt>반</dt><dd>'+esc(S.name)+'</dd><dt>되살린 정도</dt><dd>100%</dd><dt>정답 힌트</dt><dd>'+(S.reveals||0)+' / '+MAX_REVEAL+'번 사용</dd><dt>번진 먹물</dt><dd>'+S.wrong+'번 (−'+S.penalty+'초)</dd><dt>걸린 시간</dt><dd>'+fmt(elapsed())+'</dd><dt>완성 시각</dt><dd>'+new Date(S.end).toLocaleTimeString("ko-KR")+'</dd><dt>암호</dt><dd style="color:var(--seal)">외세의 간섭</dd></dl>'+
+   '<dl class="meta"><dt>반</dt><dd>'+esc(S.name)+'</dd><dt>되살린 정도</dt><dd>100%</dd><dt>정답 힌트</dt><dd>'+(S.reveals||0)+' / '+MAX_REVEAL+'번 사용</dd><dt>번진 먹물</dt><dd>'+S.wrong+'번</dd><dt>걸린 시간</dt><dd>'+fmt(elapsed())+'</dd><dt>완성 시각</dt><dd>'+new Date(S.end).toLocaleTimeString("ko-KR")+'</dd><dt>암호</dt><dd style="color:var(--seal)">외세의 간섭</dd></dl>'+
    '</div><div class="sheet"><div class="eyebrow">반별 기록판</div><div style="margin-top:10px">'+recBoard(S.recAt)+'</div></div>'+
    '<h2 style="color:var(--paper);font-size:24px">완성된 일기장 다시 읽기</h2><div class="book">'+
    PAGES.map(function(p){return '<div class="mini"><b>'+esc(p.chap)+' · '+esc(p.date)+' · '+esc(p.name)+' <span class="redch">'+esc(p.letter)+'</span></b>'+bodyHTML(p,"done")+'</div>'}).join("")+'</div>'+
