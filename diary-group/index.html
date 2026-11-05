@@ -698,18 +698,18 @@ function renderTeacher(){
   if(t.view==="reveal")return renderReveal(t);
   app.innerHTML='<div class="fade" style="display:grid;gap:18px;padding-top:1vh">'+
    '<div style="text-align:center"><div class="eyebrow" style="color:var(--candle)">1866 – 1896 · 3학년 6반 · 선생님 화면</div><h1 style="margin-top:6px">일기장 조각 맞추기</h1>'+
-   '<p style="margin:8px auto 0;max-width:40em;color:var(--paper-dim)">모둠마다 QR을 하나씩 찍으면 서로 다른 장이 배정된다. 장을 다 되살리면 ‘외·세·의·간·섭’ 중 한 글자가 나온다.</p></div>'+
-   '<div class="row" style="justify-content:center;gap:10px"><button class="btn" id="deal">배정 새로 섞기</button><button class="btn dark" id="tog">'+(t.show?"배정 숨기기":"배정 보기 (선생님만)")+'</button><button class="btn" id="rv" style="background:var(--candle);color:#1a120a">발표 · 단어 완성 화면 →</button></div>'+
+   '</div>'+
+   '<div class="row" style="justify-content:center;gap:10px"><button class="btn dark" id="tog">'+(t.show?"배정 숨기기":"배정 보기 (선생님만)")+'</button><button class="btn" id="rv" style="background:var(--candle);color:#1a120a">발표 · 단어 완성 화면 →</button></div>'+
    '<div class="gcards">'+t.assign.map(function(a,i){var p=PAGES[a.c];return '<div class="gcard"><div class="gh"><span class="gn">'+a.g+'모둠</span>'+(t.show?'<span class="gl">'+esc(p.chap)+' · <b>'+esc(a.l)+'</b></span>':'')+'</div>'+
      '<div class="qrbox" id="qr'+i+'"></div>'+
      '<div class="ld" id="ld'+i+'">'+ldHTML(t.groups[i])+'</div>'+
      '<textarea class="gm" data-i="'+i+'" rows="2" aria-label="'+a.g+'모둠 모둠원 (맨 앞 이름이 조장)">'+esc(t.groups[i]||"")+'</textarea></div>'}).join("")+'</div>'+
-   '<p class="note" style="text-align:center">모둠원 칸은 눌러서 고칠 수 있고, 맨 앞 이름이 폰을 들고 오는 조장입니다. ‘새로 섞기’를 누르면 장과 글자 배정이 모두 바뀌고, 예전 QR은 새 판과 섞이지 않습니다.</p></div>';
+   '<p class="note" style="text-align:center">모둠원 칸은 눌러서 고칠 수 있고, 맨 앞 이름이 폰을 들고 오는 조장입니다.</p></div>';
   t.assign.forEach(function(a,i){var box=$("qr"+i);try{var cv=QRMini.canvas(ticketUrl(t,a),440);cv.setAttribute("role","img");cv.setAttribute("aria-label",a.g+"모둠 입장 QR");box.appendChild(cv)}catch(e){box.innerHTML='<p class="note">QR을 그리지 못했습니다</p>'}});
   Array.prototype.forEach.call(app.querySelectorAll(".gm"),function(x){x.oninput=function(){var i=+x.getAttribute("data-i");t.groups[i]=x.value;tSave(t);$("ld"+i).innerHTML=ldHTML(x.value)};x.onchange=function(){renderTeacher()}});
   $("tog").onclick=function(){t.show=!t.show;tSave(t);renderTeacher()};
   $("rv").onclick=function(){t.view="reveal";tSave(t);renderTeacher()};
-  $("deal").onclick=function(){
+  if($("deal"))$("deal").onclick=function(){
     modal.innerHTML='<div class="overlay"><div class="sheet fade"><h2>새로 섞을까요?</h2><p class="story">장과 글자 배정이 모두 바뀌고 QR도 새로 만들어진다. 모둠이 이미 QR을 찍었다면, 새 QR을 다시 찍어야 한다.</p><div class="row" style="margin-top:16px"><button class="btn" id="yes">새로 섞기</button><button class="btn dark" id="no">취소</button></div></div></div>';
     $("no").onclick=function(){modal.innerHTML=""};$("yes").onclick=function(){tSave(newDeal(t));modal.innerHTML="";renderTeacher()};
   };
