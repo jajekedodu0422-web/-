@@ -157,6 +157,69 @@ button:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline
 @media (prefers-reduced-motion:reduce){.shake,.fade,.tapguide .ar,.blank.cur,.miss,.rv-got,.rv-lbl,.rv-name,.rv-sub,.reveal .btn,.slot5.on .sl{animation:none}}
 
 .nb-body>span,.nb-body>button.sent{display:block;padding:0 3px}
+/* ---------- v2: 이야기 영상 ---------- */
+.movie{background:#3a2214;border-radius:18px;padding:16px;box-shadow:0 18px 40px rgba(60,35,15,.35),inset 0 0 0 4px #5a3420;display:grid;gap:12px;justify-items:center}
+.mv-top{display:flex;gap:12px;align-items:baseline;justify-content:center;flex-wrap:wrap}
+.mv-ttl{font-family:var(--display);font-size:clamp(26px,4vw,36px);color:#fbeed4}
+.frame.mv{max-width:520px;border-color:#e2b33c}
+.subs{min-height:150px;width:100%;max-width:640px;display:grid;gap:8px;align-content:start}
+.sub-line{font-family:var(--story);font-size:clamp(19px,2.6vw,24px);color:#fbeed4;text-align:center;line-height:1.5;word-break:keep-all;animation:up .6s ease-out both}
+.sub-line:last-child{color:#ffd98a;font-weight:700}
+#next.ready{animation:nudge 1.2s ease-in-out infinite}
+@keyframes nudge{50%{transform:scale(1.06)}}
+/* ---------- v2: 문제 ---------- */
+.qdots{display:flex;gap:6px;align-items:center}
+.qdots span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:18px;border:2px solid var(--line);color:var(--ink-soft);background:var(--paper)}
+.qdots span.on{border-color:var(--red);color:var(--red)}
+.qdots span.ok{background:var(--green);border-color:var(--green);color:#fff}
+.qdots .lock{border-radius:8px;border-style:dashed;border-color:var(--red);color:var(--red)}
+.qcard{display:grid;gap:12px}
+.qcard .task{margin:4px 0 0}
+.src{margin:0;background:#f3e6c8;border-left:6px solid var(--wood);border-radius:8px;padding:14px 16px}
+.src p{font-family:var(--story);font-size:clamp(17px,2.2vw,20px);line-height:1.75;word-break:keep-all}
+.src cite{display:block;text-align:right;font-style:normal;color:var(--ink-soft);font-size:15px;margin-top:6px}
+.opts{display:grid;gap:10px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{font:inherit;font-size:clamp(17px,2.3vw,21px);text-align:left;line-height:1.4;word-break:keep-all;display:flex;gap:10px;align-items:baseline;padding:14px 16px;border-radius:12px;border:2px solid var(--line);background:var(--paper-2);color:var(--ink);cursor:pointer}
+.opt b{font-family:var(--display);font-weight:400;color:var(--red);flex:none}
+.opts.two .opt{justify-content:center;font-family:var(--display);font-size:28px}
+.opt.sel{border-color:var(--blue);background:#e3eef7}
+.opt.right{background:var(--green);border-color:var(--green);color:#fff}.opt.right b{color:#fff}
+.opt.wrong{opacity:.4;text-decoration:line-through;text-decoration-color:var(--red)}
+.opt:disabled{cursor:default}
+.oxs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ox{font-family:var(--display);font-size:72px;line-height:1;padding:18px 0;border-radius:16px;border:3px solid var(--line);background:var(--paper-2);cursor:pointer}
+.ox.o{color:var(--blue)}.ox.x{color:var(--red)}
+.ox.wrong{opacity:.35}
+.ox:disabled{cursor:default}
+.match{display:grid;gap:10px}
+.mrow{display:grid;grid-template-columns:minmax(110px,auto) 1fr;gap:10px;align-items:center;background:var(--paper-2);border-radius:12px;padding:10px}
+.ml{font-family:var(--display);font-size:22px;color:var(--ink)}
+.mr{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:inherit;font-size:clamp(16px,2.1vw,19px);padding:10px 14px;border-radius:999px;border:2px solid var(--line);background:#fffdf6;color:var(--ink);cursor:pointer;word-break:keep-all;text-align:left}
+.chip.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.chip:disabled{cursor:default}
+.pic{margin:0;display:grid;justify-items:center;gap:4px}
+.pic-in{position:relative;display:inline-block;max-width:100%;border:6px solid #c9a77c;border-radius:4px;box-shadow:0 0 0 2px #8f6a45}
+.pic-in img{display:block;max-width:100%;max-height:52vh;height:auto;user-select:none;-webkit-user-drag:none}
+.pic figcaption{font-size:15px;color:var(--ink-soft)}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:end}
+.trio .pic-in img{max-height:26vh}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{background:var(--paper-2);border-radius:12px;padding:12px;display:grid;gap:8px}
+.fg>b{font-family:var(--display);font-weight:400;font-size:24px;color:var(--red)}
+.bars{display:grid;gap:6px}
+.br{display:flex;align-items:center;gap:8px;font-size:16px}
+.br span:first-child{width:4.6em;flex:none}
+.sq{display:flex}
+.sq i{width:clamp(20px,3.4vw,30px);height:clamp(20px,3.4vw,30px);border:2px solid var(--ink);margin-left:-2px;background:#fffdf6}
+.sq i.on{background:var(--yellow)}
+.figcap{font-size:14px;color:var(--ink-soft);margin-top:-4px}
+.hint{display:block;margin-top:6px;font-weight:400;color:var(--ink);background:#fff3cf;border-left:5px solid var(--yellow);padding:8px 12px;border-radius:6px}
+.fb.good b{color:#3e6a2c}
+.fb.good{font-weight:400;color:var(--ink);background:#e4f0de;border-left:5px solid var(--green);padding:10px 14px;border-radius:6px}
+.note-book .nb-body .blank{min-width:3.6em}
+@media (max-width:600px){.mrow{grid-template-columns:1fr}.qdots span{width:28px;height:28px;font-size:15px}.trio .pic-in img{max-height:20vh}}
 
 /* ---------- 인물 ---------- */
 .fc{display:none}
@@ -501,71 +564,100 @@ const ART={
   end:(won,n)=>sky+ground+hut(300,300,.85)+coinPile(214,366,n*2+2)
      +heung({x:96,y:360,s:1.15,mood:"happy",cls:"joy"})+nol({x:330,y:360,s:1.05,mood:"neutral"})+swallow(200,120,.8,"circle",3)
 };
+/* 시간에 따라 바뀌는 장면 */
+const TL={
+  s4:root=>[[3200,()=>{root.classList.add("opened");const h=root.querySelector(".heung");mood(h,"happy");h.classList.remove("sawR");h.classList.add("joy")}]],
+  s5:root=>[[2800,()=>{root.classList.add("opened");const n=root.querySelector(".nol");mood(n,"shock");n.classList.remove("sawL");n.classList.add("fall")}],
+            [4800,()=>{const w=root.querySelector(".heungw");w.style.opacity=1;w.classList.add("enter");root.querySelector(".heung").classList.add("reach");mood(root.querySelector(".nol"),"sad")}]]
+};
+
+
+function mood(el,m){if(!el)return;[...el.classList].filter(c=>c.startsWith("mood-")).forEach(c=>el.classList.remove(c));el.classList.add("mood-"+m)}
 </script>
 <script>
 (function(){
 "use strict";
-var BUILD="1106a",KEY="heungbu-group-v1",TKEY="heungbu-group-teacher-v1";
+var BUILD="1106b",KEY="heungbu-group-v2",TKEY="heungbu-group-teacher-v2";
 var PUBLIC_URL="https://jajekedodu0422-web.github.io/-/heungbu-group/";
 var CODE="착하게살자";
-/* 마당 다섯 개. body: [낱말]은 빈칸, "{F}"는 거짓 문장 자리 */
-var PAGES=[
- {chap:"첫째 마당",name:"욕심쟁이 형, 놀부",topic:"상속 · 제사",
-  story:"옛날 어느 마을에 놀부와 흥부 형제가 살았어요. 부모님이 돌아가시자 형 놀부는 논밭과 곳간을 <em>모두 차지</em>하고, 아우 흥부네 식구를 집에서 내쫓았어요.",
-  riddle:"큰아들 놀부가 홀로 물려받은 재물 가운데, 짤랑짤랑 소리가 나는 것을 찾아라.",
-  body:["조선 전기에는 『성종실록』의 기록처럼 아들과 딸이 재산을 [고르게] 나누어 받았다.","그러나 조선 후기에는 [성리학]적 질서가 향촌 사회에 뿌리내렸다.","{F}","그래서 제사를 맡은 [큰아들]이 상속에서 우대를 받았다.","놀부가 곳간을 독차지할 수 있었던 까닭이다."],
-  bad:"조선 후기에도 제사는 아들딸이 돌아가며 지냈다.",
-  good:"조선 후기에는 큰아들이 제사를 도맡아 지냈다.",
-  wrongFix:["조선 후기에는 사위가 제사를 도맡아 지냈다.","조선 후기에는 제사를 지내지 않았다."],
-  extra:["불교","실학","막내아들","딸"]},
- {chap:"둘째 마당",name:"주걱으로 뺨을 맞은 흥부",topic:"혼인 풍습",
-  story:"굶주린 아이들을 보다 못한 흥부가 형님 댁에 밥을 얻으러 갔어요. 부엌에서 밥을 푸던 형수는 밥주걱으로 흥부의 뺨을 <em>철썩!</em> 흥부는 뺨에 붙은 밥알을 떼어 먹으며 말했어요. “형수님, 이쪽 뺨도 마저 때려 주십시오.”",
-  riddle:"놀부네로 시집온 형수가 흥부의 뺨을 때린 물건을 찾아라.",
-  body:["흥부의 뺨을 때린 형수는 혼인한 뒤 놀부네 집에 들어와 살았다.","조선 전기에는 혼인하면 남자가 여자 집에서 사는 일이 많아 ‘[장가]간다’고 했다.","{F}","조선 후기에는 여자가 남편 집에 들어가 사는 ‘[시집]간다’가 자리 잡았다.","그 결과 [아버지] 쪽 중심의 집안이 되었다."],
-  bad:"조선 전기에는 친가만 중요하게 여기고 외가는 남처럼 여겼다.",
-  good:"조선 전기에는 친가와 외가를 고르게 중요하게 여겼다.",
-  wrongFix:["조선 전기에는 외가만 중요하게 여기고 친가는 남처럼 여겼다.","조선 전기에는 친가와 외가를 모두 남처럼 여겼다."],
-  extra:["분가","어머니","처가","데릴사위"]},
- {chap:"셋째 마당",name:"제비 다리를 고친 흥부",topic:"서민 문화의 배경",
-  story:"봄이 되자 흥부네 처마 밑에 제비가 둥지를 틀었어요. 어느 날 새끼 한 마리가 둥지에서 떨어져 <em>다리가 부러지자</em>, 흥부는 부러진 다리를 정성껏 동여매 주었어요.",
-  riddle:"흥부가 부러진 다리를 정성껏 동여매 준 작은 손님을 찾아라.",
-  body:["흥부 이야기를 즐겨 들은 사람들은 주로 [서민]이었다.","조선 후기에는 농업과 상공업이 발달해 서민의 [경제력]이 커졌다.","마을마다 [서당]이 늘어 글을 배우는 아이가 많아졌다.","{F}","[한글]을 읽고 쓰는 사람도 늘어 서민 문화가 꽃피었다."],
-  bad:"김홍도의 「서당」에는 훈장님께 혼나 우는 아이가 그려져 있지 않다.",
-  good:"김홍도의 「서당」에는 훈장님께 혼나 우는 아이와 웃는 친구들이 그려져 있다.",
-  wrongFix:["신윤복의 「서당」에는 훈장님께 혼나 우는 아이와 웃는 친구들이 그려져 있다.","김홍도의 「서당」에는 웃는 훈장님과 우는 친구들만 그려져 있다."],
-  extra:["양반","향교","한자","왕족"]},
- {chap:"넷째 마당",name:"슬근슬근 박 타기",topic:"판소리 · 한글 소설",
-  story:"이듬해 봄, 강남에서 돌아온 제비가 <em>박씨 한 알</em>을 물어 왔어요. 가을이 되자 지붕 위에 커다란 박이 주렁주렁 열렸지요. “슬근슬근 톱질이야!” 박을 타자 금은보화가 쏟아져 나왔어요.",
-  riddle:"‘슬근슬근’ 소리를 내며 커다란 박을 가른 도구를 찾아라.",
-  body:["“슬근슬근 톱질이야!” 흥부 이야기는 노래로도 불렸다.","소리꾼이 [고수]의 북장단에 맞춰 이야기를 노래하는 것을 [판소리]라고 한다.","흥부 이야기는 판소리 「흥보가」로 불렸다.","{F}","이야기를 글로 옮긴 [한글 소설] 「흥부전」도 널리 읽혔다."],
-  bad:"판소리는 궁궐 안에서 왕과 왕비만 즐길 수 있었다.",
-  good:"판소리는 장터나 잔치 마당에서 서민과 양반이 함께 즐겼다.",
-  wrongFix:["판소리는 서당에서 훈장님만 즐길 수 있었다.","판소리는 외국 사신을 맞을 때만 불렀다."],
-  extra:["탈춤","시조","한문 소설","사또"]},
- {chap:"다섯째 마당",name:"놀부도 박을 탔지만",topic:"탈춤 · 풍속화 · 민화",
-  story:"샘이 난 놀부는 일부러 제비 다리를 부러뜨렸다가 동여매 주었어요. 그 제비가 물어 온 박씨를 심어 박을 탔더니, 보물 대신 <em>온갖 몹쓸 것들</em>이 쏟아져 나와 놀부는 쫄딱 망했어요. 흥부는 그런 형에게 재물을 나누어 주었고, 놀부는 잘못을 뉘우쳤답니다.",
-  riddle:"놀부의 박에서 튀어나와 욕심쟁이를 혼내 준 것을 찾아라.",
-  body:["박에서 튀어나온 도깨비가 욕심쟁이 놀부를 혼내 주자 사람들은 크게 웃었다.","이처럼 [탈춤]은 양반의 잘못을 우스꽝스럽게 [풍자]했다.","[김홍도]는 「씨름」처럼 서민의 일상을 그렸다.","{F}","서민들은 복을 빌며 집 안을 [민화]로 꾸몄다."],
-  bad:"신윤복은 농촌에서 일하는 서민의 모습을 주로 그렸다.",
-  good:"신윤복은 「연소답청」처럼 양반과 여인의 풍류를 그렸다.",
-  wrongFix:["신윤복은 「씨름」처럼 서민의 일상을 그렸다.","신윤복은 왕실의 잔치 모습만 그렸다."],
-  extra:["신윤복","칭찬","산수화","판소리"]}
-];
-PAGES.forEach(function(p){p.words=[];p.body.forEach(function(s){s.replace(/\[([^\]]+)\]/g,function(_,w){p.words.push(w)})})});
+var IMG={sinhaeng:"img/sinhaeng.jpg",seodang:"img/seodang.jpg",reading:"img/reading.jpg",pyeongyang:"img/pyeongyang.jpg",ssireum:"img/ssireum.jpg",mudong:"img/mudong.jpg",yeonso:"img/yeonso.jpg"};
+function bars(a){return '<div class="bars">'+[["큰아들",a[0]],["작은아들",a[1]],["딸",a[2]]].map(function(r){var s="";for(var i=0;i<5;i++)s+='<i class="'+(i<r[1]?"on":"")+'"></i>';return '<div class="br"><span>'+r[0]+'</span><span class="sq">'+s+'</span></div>'}).join("")+'</div>'}
 
-/* ---------- 찾기 그림: 대상은 선택자 또는 [x,y,w,h](그림 좌표 400×400) ---------- */
-function mood(el,m){if(!el)return;[].slice.call(el.classList).filter(function(c){return c.indexOf("mood-")===0}).forEach(function(c){el.classList.remove(c)});el.classList.add("mood-"+m)}
-var FIND=[
- {cls:"",svg:function(){return sky+ground+kiwa(300,300,1)+'<g id="d-sack">'+sack(236,348)+'</g>'+nol({x:300,y:340,s:1.05,mood:"smug"})+'<g id="t-coin">'+coinPile(330,390,12)+'</g>'+'<g id="d-heung">'+heung({x:100,y:358,s:1.1,mood:"sad",bundle:true})+'</g>'},
-  target:"#t-coin",decoys:["#d-sack","#d-heung",[30,40,90,40]]},
- {cls:"sc-q3",svg:function(){return kitchen+'<g id="d-heung">'+heung({x:120,y:362,s:1.2,mood:"sad"})+'</g>'+rice(146,242)+wife({x:278,y:364,s:1.2,mood:"angry",holdB:'<g id="t-jug">'+P.jugeok+'</g>'})},
-  target:"#t-jug",decoys:["#d-heung",[252,180,148,150],[20,150,70,90]]},
- {cls:"",svg:function(){return sky+ground+'<g id="d-hut">'+hut(320,300,.8)+'</g>'+'<g id="d-heung">'+heung({x:150,y:360,s:1.2,mood:"neutral",cls:"lean wrap"})+'</g>'+'<g id="t-swal">'+swallow(262,334,1,"hurt",0,false,true)+'</g>'},
-  target:"#t-swal",decoys:["#d-hut","#d-heung",[30,40,90,40]]},
- {cls:"",svg:function(){return sky+floor+'<g id="d-hut">'+hut(330,250,.6)+'</g>'+'<g id="d-gourd">'+gourd(232,326,72,"treasure")+'</g>'+'<g id="t-saw">'+sawEl(232,268,150)+'</g>'+'<g id="d-heung">'+heung({x:92,y:362,s:1.15,mood:"happy",cls:"sawR"})+'</g>'},
-  target:"#t-saw",decoys:["#d-hut","#d-heung",[170,290,124,40]]},
- {cls:"opened",svg:function(){return sky+floor+gourd(196,330,64,"goblin")+'<g id="d-nol">'+nol({x:312,y:362,s:1.08,mood:"shock",cls:"fall"})+'</g>'},
-  target:".gob",decoys:["#d-nol",".lid",[30,40,90,40]]}
+/* ---------- 마당과 문제 ---------- */
+var PAGES=[
+ {chap:"첫째 마당",name:"욕심쟁이 형, 놀부",topic:"조선 후기 상속의 변화",art:"s1",
+  movie:["부모님이 돌아가시자 형 놀부는 논밭과 곳간을 모두 차지했어요.","아우 흥부네 식구는 빈손으로 쫓겨났지요.","그런데… 놀부는 어떻게 재산을 독차지할 수 있었을까요?"],
+  qs:[
+   {type:"mc",src:"자손에게 유서나 훈계하는 글을 남기는 것, 노비, 밭과 땅을 나누는 것은 한 집을 다스리는 것이다. … 어찌 아들과 딸을 구별하고 외손과 친손을 구별하겠는가?",srcBy:"『성종실록』",
+    q:"이 기록으로 보아, 조선 전기에는 재산을 어떻게 나누었을까요?",opts:["큰아들에게만 물려주었다","아들과 딸에게 고르게 나누었다","딸에게만 물려주었다","사위에게만 물려주었다"],a:1,
+    hint:"‘어찌 구별하겠는가?’는 ‘구별하지 않는다’는 뜻이에요.",e:"조선 전기에는 아들딸을 구별하지 않고 재산을 고르게 나누었어요."},
+   {type:"mc",src:"남매가 재산을 공평하게 나누면 제사도 똑같이 돌아가며 지내야 한다. 사대부가의 딸들은 시집간 후 본가의 제사를 마음대로 실행하지 못하니 … 딸에게 몫을 나눠 주되 약간을 감하고, 본가의 제사를 돌아가며 지내지 말라.",srcBy:"오재훈 남매의 상속 문서(1701)",
+    q:"이 문서는 딸의 몫을 어떻게 하라고 했나요?",opts:["아들보다 더 많이 준다","아들과 똑같이 준다","조금 줄여서 준다","전혀 주지 않는다"],a:2,
+    hint:"‘감하다’는 ‘덜다, 줄이다’라는 뜻이에요.",e:"조선 후기에는 딸의 몫이 줄고, 제사도 돌아가며 지내지 않게 되었어요."},
+   {type:"mc",fig:'<div class="figs"><div class="fg"><b>(가)</b>'+bars([3,3,3])+'</div><div class="fg"><b>(나)</b>'+bars([5,3,1])+'</div></div><p class="figcap">네모 칸은 물려받은 재산의 양을 나타낸 예시예요.</p>',
+    q:"조선 후기의 재산 상속을 나타낸 그림은 어느 것일까요?",opts:["(가)","(나)"],a:1,two:true,
+    hint:"조선 후기에는 제사를 맡은 사람이 재산을 더 많이 받았어요.",e:"(나)처럼 제사를 맡은 큰아들이 가장 많이 받았어요. (가)는 조선 전기의 모습이에요."},
+   {type:"ox",q:"조선 후기에는 아들과 딸이 재산을 똑같이 나눠 받는 것이 일반적이었다.",a:false,
+    hint:"방금 읽은 1701년 오재훈 남매의 상속 문서를 떠올려 보세요.",e:"조선 후기에는 큰아들을 우대하고 딸의 몫은 줄었어요."},
+   {type:"mc",q:"그렇다면 놀부가 부자가 된 까닭으로 가장 알맞은 것은?",opts:["남의 재산을 빼앗고 다녀서","큰아들이라 부모의 재산을 많이 물려받아서","장사를 잘해서","과거에 급제해서"],a:1,
+    hint:"놀부는 흥부의 형이에요. 집안에서 몇째 아들일까요?",e:"놀부는 큰아들이라 상속에서 우대를 받았어요."}
+  ]},
+ {chap:"둘째 마당",name:"주걱으로 뺨을 맞은 흥부",topic:"조선 후기 혼인과 제사",art:"s2",
+  movie:["배고픈 흥부가 형님 댁에 밥을 얻으러 갔어요.","형수는 밥주걱으로 흥부의 뺨을 철썩!","놀부네로 시집온 형수, 그 시절 혼인은 어땠을까요?"],
+  qs:[
+   {type:"match",img:"sinhaeng",cap:"김홍도 「신행」",q:"「신행」은 혼례 행렬을 그린 그림이에요. 시기와 혼인 풍습을 짝지어 보세요.",left:["조선 중기","조선 후기"],right:["장가간다","시집간다"],a:[0,1],
+    hint:"‘시집’은 남편의 집이라는 뜻이에요. 남편 집에 들어가 사는 풍습이 자리 잡은 때는 언제일까요?",e:"조선 중기에는 ‘장가간다’, 조선 후기에는 ‘시집간다’가 자리 잡았어요."},
+   {type:"mc",q:"‘시집간다’가 자리 잡은 뒤, 집안은 어느 쪽을 중심으로 바뀌었을까요?",opts:["어머니 쪽 중심","아버지 쪽 중심","모든 쪽이 균형 잡힌 집안","사위 쪽 중심"],a:1,
+    hint:"여자가 남편의 집, 곧 남편 아버지의 집에 들어가 살게 되었어요.",e:"조선 중기에는 모든 쪽이 균형 잡힌 집안이었지만, 후기에는 아버지 쪽 중심 집안이 되었어요."},
+   {type:"ox",q:"조선 후기에는 집안의 제사를 큰아들이 혼자 지냈다.",a:true,
+    hint:"놀부네 집에서 제사를 맡은 사람은 누구였을까요?",e:"조선 후기에는 큰아들이 혼자 제사를 지냈어요(큰아들 단독 봉사)."},
+   {type:"mc",q:"아들이 없는 집안은 대를 잇기 위해 어떻게 했을까요?",opts:["딸이 제사를 맡았다","같은 성씨의 친족 가운데 한 명을 양자로 들였다","사위가 성을 바꾸었다","제사를 그만 지냈다"],a:1,
+    hint:"‘양자’는 다른 집 아들을 데려와 자기 아들로 삼는 것이에요.",e:"대를 잇기 위해 같은 성씨 친족 가운데 한 명을 양자로 들였어요."},
+   {type:"blanks",q:"낱말 도장을 빛나는 빈칸부터 차례로 눌러 한 줄 요약을 완성하세요.",text:"조선 후기, 향촌 사회에 [성리학]적 규범이 정착되어, 제사를 [큰아들]이 혼자 지냈고, 이로 인해 [상속]에서 우대를 받았다.",extra:["불교","막내아들","딸","과거"],
+    hint:"이 마당에서 배운 낱말이에요. 빛나는 빈칸 앞뒤를 다시 읽어 보세요.",e:"조선 후기 가족 제도의 변화를 한 줄로 정리했어요."}
+  ]},
+ {chap:"셋째 마당",name:"제비 다리를 고친 흥부",topic:"서민 문화의 배경과 한글 소설",art:"s3",
+  movie:["봄날, 흥부네 처마 밑 제비가 둥지에서 떨어졌어요.","흥부는 부러진 다리를 정성껏 동여매 주었지요.","이 이야기를 즐겨 읽고 들은 사람들은 누구였을까요?"],
+  qs:[
+   {type:"tap",img:"seodang",cap:"김홍도 「서당」",q:"훈장님께 혼나 울고 있는 아이를 찾아 눌러 보세요.",spot:[30,38,16,21],decoys:[[50,12,30,34],[44,71,17,22],[68,44,22,20],[8,26,24,30]],
+    hint:"훈장님 책상 옆에서 손으로 눈물을 닦고 있는 아이를 찾아보세요.",e:"훈장님 앞에서 우는 아이와 웃는 친구들, 조선 후기 서당의 모습이에요."},
+   {type:"multi",q:"조선 후기에 서민 문화가 발달한 배경을 모두 골라 보세요.",opts:["서민의 경제력 향상","서당 보급","한글을 쓰는 사람 증가","과거 시험 폐지","양반 수의 감소"],a:[0,1,2],
+    hint:"정답은 3개예요. 돈, 배움, 글자와 관련된 것을 떠올려 보세요.",e:"서민의 경제력이 커지고, 서당이 늘고, 한글을 쓰는 사람이 많아지면서 서민 문화가 발달했어요."},
+   {type:"match",q:"한글 소설과 그 내용을 짝지어 보세요.",left:["「홍길동전」","「춘향전」"],right:["서얼 차별, 이상 국가 수립","신분을 뛰어넘은 사랑"],a:[0,1],
+    hint:"춘향과 이몽룡의 이야기를 떠올려 보세요.",e:"한글 소설에는 서민들이 바라던 세상과 생각이 담겨 있어요."},
+   {type:"mc",img:"reading",cap:"윤덕희 「책 읽는 여인」",q:"이 그림처럼 조선 후기에 책을 즐겨 읽는 사람이 늘어난 까닭으로 알맞은 것은?",opts:["한글을 읽고 쓰는 사람이 늘어서","책이 모두 한자로만 쓰여서","서당이 모두 문을 닫아서","과거 시험이 없어져서"],a:0,
+    hint:"앞에서 고른 서민 문화의 배경 가운데 ‘글자’와 관련된 것이에요.",e:"한글을 아는 사람이 늘면서 여성과 서민도 책을 즐겨 읽게 되었어요."},
+   {type:"ox",q:"흥부전은 한글 소설이다.",a:true,
+    hint:"흥부 이야기가 ‘글’로 전해진 방법을 떠올려 보세요.",e:"흥부 이야기는 한글 소설 「흥부전」으로 널리 읽혔어요."}
+  ]},
+ {chap:"넷째 마당",name:"슬근슬근 박 타기",topic:"판소리",art:"s4",
+  movie:["강남에서 돌아온 제비가 박씨 한 알을 물어 왔어요.","“슬근슬근 톱질이야!” 박을 타자 금은보화가 와르르!","이 노랫가락은 어떻게 오늘날까지 전해졌을까요?"],
+  qs:[
+   {type:"tap",img:"pyeongyang",cap:"「평양도」 10폭 병풍 일부",q:"소리꾼과 고수가 판소리를 하는 장면을 찾아 눌러 보세요.",spot:[32,33,20,36],decoys:[[57,30,21,36],[8,28,22,40],[0,0,28,24],[70,0,30,24]],
+    hint:"그림 가운데 노란 돗자리 위, 부채를 든 사람과 북을 든 사람을 찾아보세요.",e:"부채를 든 소리꾼과 북을 치는 고수가 판소리를 하고, 많은 사람이 구경하고 있어요."},
+   {type:"match",q:"판소리를 하는 두 사람과 하는 일을 짝지어 보세요.",left:["고수","소리꾼"],right:["북을 치며 장단을 맞춘다","노래하고 말하며 이야기를 들려준다"],a:[0,1],
+    hint:"고수의 ‘고(鼓)’는 ‘북’이라는 뜻이에요.",e:"소리꾼이 노래하면 고수가 북장단을 맞추고 “얼씨구!” 추임새를 넣어요."},
+   {type:"match",q:"흥부 이야기가 전해진 두 방법을 짝지어 보세요.",left:["「흥보가」","「흥부전」"],right:["판소리","한글 소설"],a:[0,1],
+    hint:"‘가(歌)’는 ‘노래’라는 뜻이에요.",e:"흥부 이야기는 판소리 「흥보가」로 불리고, 한글 소설 「흥부전」으로 읽혔어요."},
+   {type:"ox",q:"판소리는 궁궐 안에서 왕만 즐길 수 있었다.",a:false,
+    hint:"방금 찾은 「평양도」 속 판소리는 어디에서, 누가 보고 있었나요?",e:"판소리는 바깥 마당에서 많은 사람이 함께 즐겼어요."},
+   {type:"blanks",q:"낱말 도장을 빛나는 빈칸부터 차례로 눌러 한 줄 요약을 완성하세요.",text:"조선 후기 한글 소설, 판소리 등의 [서민] 문화가 꽃피었다. 흥부 이야기를 노래로 들려준 것은 [판소리], 글로 읽게 한 것은 [한글 소설]이다.",extra:["양반","왕실","한문 소설","탈춤"],
+    hint:"‘노래’와 ‘글’이라는 말에 밑줄을 그어 보세요.",e:"한글 소설과 판소리 덕분에 흥부 이야기가 우리에게 전해졌어요."}
+  ]},
+ {chap:"다섯째 마당",name:"놀부도 박을 탔지만",topic:"풍속화와 민화",art:"s5",
+  movie:["샘이 난 놀부도 박씨를 심어 박을 탔어요.","그런데 보물 대신 도깨비가 튀어나왔지 뭐예요!","놀부, 흥부 같은 사람들의 삶은 그림으로도 남았어요."],
+  qs:[
+   {type:"match",imgs:["mudong","ssireum","yeonso"],q:"그림과 그린 화가를 짝지어 보세요.",left:["「무동」","「씨름」","「연소답청」"],right:["김홍도","신윤복"],a:[0,0,1],
+    hint:"말을 탄 양반과 여인들이 봄나들이를 가는 그림은 다른 화가의 작품이에요.",e:"「무동」과 「씨름」은 김홍도, 「연소답청」은 신윤복의 그림이에요."},
+   {type:"match",q:"두 화가가 주로 그린 모습을 짝지어 보세요.",left:["김홍도","신윤복"],right:["농촌 서민의 일상","양반의 풍류, 여성의 생활"],a:[0,1],
+    hint:"씨름판처럼 서민이 모인 장면을 그린 화가는 누구였나요?",e:"김홍도는 서민의 일상을, 신윤복은 양반의 풍류와 여성의 생활을 그렸어요."},
+   {type:"ox",q:"신윤복은 농촌 서민의 일상이 담긴 풍속화를 주로 그렸다.",a:false,
+    hint:"「연소답청」 속 인물들은 농사를 짓고 있었나요?",e:"농촌 서민의 일상을 주로 그린 화가는 김홍도예요."},
+   {type:"mc",q:"조선 후기 서민들이 민화를 그려 집 안에 둔 까닭으로 알맞은 것은?",opts:["복을 빌고 집을 꾸미려고","왕실 행사를 기록하려고","과거 시험을 보려고","외국에 팔려고"],a:0,
+    hint:"까치, 호랑이, 꽃 같은 민화는 좋은 일이 생기기를 바라는 마음을 담았어요.",e:"서민들은 민화를 그려 복을 빌고 집 안을 꾸몄어요."},
+   {type:"mc",q:"민화는 대부분 ‘작자 미상’이에요. ‘작자 미상’의 뜻은?",opts:["그린 사람을 알 수 없다","이름난 화원이 그렸다","왕이 직접 그렸다","외국 화가가 그렸다"],a:0,
+    hint:"‘미상(未詳)’은 ‘자세히 알지 못한다’는 뜻이에요.",e:"민화는 이름이 알려지지 않은 서민 화가들이 많이 그렸어요."}
+  ]}
 ];
 
 /* ---------- 상태 ---------- */
@@ -573,152 +665,122 @@ function enc(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).spl
 function dec(t){try{t=t.split("").reverse().join("");while(t.length%4)t+="=";return JSON.parse(decodeURIComponent(escape(atob(t))))}catch(e){return null}}
 var T=(function(){try{var q=new URLSearchParams(location.search).get("t");if(!q)return null;var o=dec(q);if(o&&o.g&&o.c!=null&&o.l)return o}catch(e){}return null})();
 if(T)KEY=KEY+"-"+T.k+"-"+T.g;
-function blank(){return {stage:"intro",name:T?T.g+"모둠":"",page:T?T.c:0,phase:"find",filled:0,fixStep:0,fixOpts:null,start:0,end:0,wrong:0,wrongBy:{},missWord:{},miss:0,hlv:0,htxt:"",mkey:""}}
+function blank(){return {stage:"intro",name:T?T.g+"모둠":"",page:T?T.c:0,qi:0,wrong:[0,0,0,0,0],tries:0,solved:false,st:{}}}
 var S=(function(){try{var s=JSON.parse(localStorage.getItem(KEY));if(s&&s.stage)return s}catch(e){}return blank()})();
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 var app=document.getElementById("app"),modal=document.getElementById("modal");
 function $(id){return document.getElementById(id)}
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
-function fmt(s){s=Math.max(0,Math.floor(s));var m=Math.floor(s/60),x=s%60;return(m<10?"0":"")+m+":"+(x<10?"0":"")+x}
 function each(sel,fn){Array.prototype.forEach.call(app.querySelectorAll(sel),fn)}
-function fb(cls,t){var f=$("fb");if(f){f.className="fb "+cls;f.textContent=t}}
-function inkFx(){var x=document.createElement("div");x.className="blot";x.innerHTML="<i></i>";document.body.appendChild(x);setTimeout(function(){x.remove()},750)}
-var HINT=null,HINT_AT=[3,6];
-function penalize(t){
-  var p=PAGES[S.page],wk=S.phase==="fill"?"빈칸 ‘"+p.words[S.filled]+"’":S.phase==="fix"?"거짓 문장 바로잡기":"그림에서 찾기";
-  S.wrongBy[S.phase]=(S.wrongBy[S.phase]||0)+1;S.missWord[wk]=(S.missWord[wk]||0)+1;
-  S.wrong++;S.miss=(S.miss||0)+1;save();showHint();
-  var sh=$("sh");if(sh){sh.classList.remove("shake");void sh.offsetWidth;sh.classList.add("shake")}
-  fb("bad",t);var w=$("wr");if(w)w.textContent=S.wrong}
-function showHint(){
-  var lv=S.hlv||0;if(lv>=2||!HINT||$("hintbtn"))return;if((S.miss||0)<HINT_AT[lv])return;
-  var b=document.createElement("button");b.id="hintbtn";b.className="btn main";b.textContent=lv===0?"힌트 보기":"정답 힌트 보기";
-  b.onclick=function(){S.hlv=(S.hlv||0)+1;save();b.remove();HINT(S.hlv)};document.body.appendChild(b)}
-function note(t){S.htxt=t;save();drawNote()}
-function drawNote(){var o=$("hintnote");if(o)o.remove();if(!S.htxt||S.stage!=="play")return;var d=document.createElement("div");d.id="hintnote";d.textContent=S.htxt;document.body.appendChild(d)}
-function glowEl(el,msg){if(el){el.classList.add("glow");try{el.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}}fb("",msg)}
-setInterval(function(){var c=$("clk");if(c&&S.stage==="play")c.textContent=fmt((Date.now()-S.start)/1000)},500);
-
 var TAB='<svg class="tab" viewBox="0 0 20 26" aria-hidden="true"><rect x="1" y="1" width="18" height="24" rx="3" fill="#3f332c"/><rect x="3.5" y="3.5" width="13" height="17" rx="1" fill="#9fc3f0"/></svg>';
-function bar(){
-  var p=PAGES[S.page],ph=[["find","① 그림 찾기"],["fill","② 빈칸 채우기"],["fix","③ 바로잡기"]],cur=["find","fill","fix"].indexOf(S.phase);
-  return '<header class="bar"><div><div class="who">'+esc(S.name)+(T&&T.n?' · 조장 '+esc(T.n):'')+' · '+esc(p.chap)+'</div><div class="steps">'+ph.map(function(x,i){return '<span class="'+(i<cur?"ok":i===cur?"on":"")+'">'+x[1]+'</span>'}).join("")+'</div></div>'+
-   '<div class="meter"><div><small>걸린 시간</small><b id="clk">'+fmt((Date.now()-S.start)/1000)+'</b></div><div><small>틀린 횟수</small><b id="wr" class="red">'+S.wrong+'</b></div></div></header>';
-}
-function bodyHTML(p,mode,n){
-  var bi=0;
-  return p.body.map(function(sent,si){
-    if(sent==="{F}"){if(mode==="done")return '<span class="sent fixed">'+esc(p.good)+'</span>';if(mode==="fix")return '<button class="sent" data-s="F">'+esc(p.bad)+'</button>';return '<span>'+esc(p.bad)+'</span>'}
-    var h=esc(sent).replace(/\[([^\]]+)\]/g,function(_,w){var k=bi++;if(mode!=="fill"||k<n)return '<span class="blank filled">'+w+'</span>';return '<span class="blank'+(k===n?" cur":"")+'">&nbsp;</span>'});
-    if(mode==="fix")return '<button class="sent" data-s="'+si+'">'+h+'</button>';
-    return '<span>'+h+'</span>';
-  }).join(" ");
-}
-function storyCard(p){return '<div class="story"><div class="lab">'+esc(p.chap)+' · '+esc(p.name)+'</div><p>'+p.story+'</p></div>'}
+var timers=[];function clearT(){timers.forEach(clearTimeout);timers=[]}
 
-/* ---------- 모둠 화면 ---------- */
+/* ---------- 모둠: 표지 ---------- */
 function renderIntro(){
   var p=PAGES[S.page];
   app.innerHTML='<div class="fade col">'+
    '<div class="cover"><div class="lab light">흥부전 조각 맞추기 · 모둠 임무</div><h1>'+esc(S.name)+'에게<br>흥부전 한 마당이 맡겨졌다</h1>'+(T&&T.n?'<div class="leader">조장 <b>'+esc(T.n)+'</b>'+TAB+'</div>':'')+
    '<div class="chapbadge">'+esc(p.chap)+' · '+esc(p.name)+'</div>'+
-   '<p>흥부전 책이 다섯 마당으로 흩어졌다. 다섯 모둠이 한 마당씩 맡아 되살리면, 마당마다 숨은 붉은 글자 하나가 나타난다. 다섯 글자를 모으면 흥부전이 전하는 한마디가 완성된다.</p></div>'+
+   '<p>흥부전 책이 다섯 마당으로 흩어졌어요. 우리 모둠의 마당을 보고 문제 다섯 개를 모두 풀면 숨은 붉은 글자 하나가 나타나요. 다섯 모둠의 글자를 모으면 흥부전이 전하는 한마디가 완성돼요.</p></div>'+
    '<div class="card"><ol class="rules">'+
-    '<li><b>① 그림 찾기</b> · 수수께끼를 읽고 그림 속 알맞은 곳을 손가락으로 누른다.</li>'+
-    '<li><b>② 빈칸 채우기</b> · 빛나는 빈칸부터 차례로 알맞은 낱말 도장을 누른다.</li>'+
-    '<li><b>③ 바로잡기</b> · 누군가 몰래 고쳐 쓴 거짓 문장 하나를 찾아 바르게 고친다.</li>'+
-    '<li><b>힌트</b> · 3번 틀리면 힌트, 6번 틀리면 정답 힌트가 나온다.</li>'+
-    '<li>모둠원이 함께 상의해서 누를 것. 어려웠던 문제는 발표 때 쓴다.</li></ol>'+
-   '<div class="row"><button class="btn main big" id="go">책을 펼친다</button></div></div></div>';
-  $("go").onclick=function(){S.stage="play";S.phase="find";S.start=Date.now();save();render()};
+    '<li><b>① 이야기 보기</b> · 우리 모둠이 맡은 흥부전 장면을 본다.</li>'+
+    '<li><b>② 문제 풀기</b> · 문제 다섯 개를 모둠원이 함께 상의해서 푼다. 시간 제한은 없다.</li>'+
+    '<li><b>틀리면?</b> · 한 번 틀리면 “다시 생각해 보세요”, 또 틀리면 힌트가 나온다.</li>'+
+    '<li><b>③ 글자 얻기</b> · 다섯 문제를 다 풀면 우리 모둠의 글자가 나온다.</li></ol>'+
+   '<div class="row"><button class="btn main big" id="go">이야기 보기 ▶</button></div></div></div>';
+  $("go").onclick=function(){S.stage="movie";save();render()};
 }
-function renderFind(){
-  var p=PAGES[S.page],f=FIND[S.page];
-  app.innerHTML=bar()+'<div class="fade col" id="sh">'+storyCard(p)+
-   '<div class="card"><div class="lab">① 그림 찾기</div><p class="task">“'+esc(p.riddle)+'”</p>'+
-   '<div class="tapguide"><span class="ar">▼</span><span>아래 그림에서 찾아 손가락으로 톡 누르세요!</span></div>'+
-   '<div class="frame" id="sc"><svg viewBox="0 0 400 400" class="'+f.cls+'" role="img" aria-label="'+esc(p.chap)+' 그림">'+f.svg()+'</svg></div>'+
-   '<div class="fb" id="fb"></div></div></div>'+resetRow();
-  var sc=$("sc"),svg=sc.querySelector("svg");
-  svg.addEventListener("click",function(e){var r=svg.getBoundingClientRect(),m=document.createElement("span");m.className="miss";m.style.left=(e.clientX-r.left)+"px";m.style.top=(e.clientY-r.top)+"px";sc.appendChild(m);setTimeout(function(){m.remove()},700);fb("","여기에는 없어요. 수수께끼를 다시 읽어 보세요.")});
-  function boxOf(spec){
-    var sr=svg.getBoundingClientRect(),k=sr.width/400,x,y,w,h;
-    if(typeof spec==="string"){var el=svg.querySelector(spec);if(!el)return null;var r=el.getBoundingClientRect();x=r.left-sr.left;y=r.top-sr.top;w=r.width;h=r.height}
-    else{x=spec[0]*k;y=spec[1]*k;w=spec[2]*k;h=spec[3]*k}
-    var pad=8;x-=pad;y-=pad;w+=pad*2;h+=pad*2;
-    if(w<56){x-=(56-w)/2;w=56}if(h<56){y-=(56-h)/2;h=56}
-    x=Math.max(0,x);y=Math.max(0,y);w=Math.min(w,sr.width-x);h=Math.min(h,sr.height-y);
-    return [x,y,w,h];
+
+/* ---------- 모둠: 짧은 이야기 영상 ---------- */
+function renderMovie(){
+  var p=PAGES[S.page];
+  app.innerHTML='<div class="fade col"><div class="movie"><div class="mv-top"><span class="lab light">'+esc(p.chap)+'</span><span class="mv-ttl">'+esc(p.name)+'</span></div>'+
+   '<div class="frame mv"><svg viewBox="0 0 400 400" class="scene sc-'+p.art+'" role="img" aria-label="'+esc(p.name)+' 장면">'+ART[p.art]()+'</svg></div>'+
+   '<div class="subs" id="subs"></div></div>'+
+   '<div class="row center"><button class="btn" id="again">↻ 다시 보기</button><button class="btn main big" id="next" disabled>문제 풀러 가기 →</button></div></div>';
+  play();
+  function play(){
+    clearT();var svg=app.querySelector(".mv svg");svg.innerHTML=ART[p.art]();svg.classList.remove("opened");
+    if(TL[p.art])TL[p.art](svg).forEach(function(x){timers.push(setTimeout(x[1],x[0]))});
+    var sb=$("subs");sb.innerHTML="";
+    p.movie.forEach(function(t,i){timers.push(setTimeout(function(){var d=document.createElement("p");d.className="sub-line";d.textContent=t;sb.appendChild(d)},400+i*2300))});
+    timers.push(setTimeout(function(){var n=$("next");if(n){n.disabled=false;n.classList.add("ready")}},400+p.movie.length*2300-800));
   }
-  function place(){
-    each(".hot",function(b){b.remove()});
-    f.decoys.concat([f.target]).forEach(function(spec,i,arr){
-      var real=i===arr.length-1,bx=boxOf(spec);if(!bx)return;
-      var b=document.createElement("button");b.className="hot";b.setAttribute("aria-label","그림 속 한 곳");
-      b.style.left=bx[0]+"px";b.style.top=bx[1]+"px";b.style.width=bx[2]+"px";b.style.height=bx[3]+"px";
-      if(real)b.id="real";
-      b.onclick=function(e){e.stopPropagation();
-        if(real){b.classList.add("found");fb("good","찾았다! 이야기 속 글이 되살아난다.");setTimeout(function(){S.phase="fill";S.filled=0;save();render()},900)}
-        else{if(b.disabled)return;b.disabled=true;b.classList.add("nope");inkFx();penalize("그건 아니에요. 수수께끼를 다시 읽어 보세요.")}};
-      sc.appendChild(b);
-    });
-  }
-  requestAnimationFrame(function(){requestAnimationFrame(place)});
-  window.onresize=function(){if(S.phase==="find"&&S.stage==="play")place()};
-  HINT=function(lv){if(lv<2)note("힌트: 이야기 글을 다시 읽어 보세요. 수수께끼의 답은 이야기 속에 나와요.");else glowEl($("real"),"빛나는 곳을 눌러 보세요.")};
-  bindReset();
+  $("again").onclick=play;
+  $("next").onclick=function(){clearT();S.stage="quiz";S.qi=0;S.tries=0;S.solved=false;S.st={};save();render()};
 }
-function renderFill(){
-  var p=PAGES[S.page];if(!S.bank||S.bankPage!==S.page){S.bank=shuffle(p.words.concat(p.extra));S.bankPage=S.page;save()}var bank=S.bank;
-  function draw(){
-    app.innerHTML=bar()+'<div class="fade col" id="sh">'+storyCard(p)+
-     '<div class="note-book"><div class="lab">② 빈칸 채우기 · 오늘 배운 내용</div><div class="nb-body">'+bodyHTML(p,"fill",S.filled)+'</div></div>'+
-     '<div class="card"><div class="lab">낱말 도장 · 빛나는 빈칸부터 차례로</div><div class="words">'+
-      bank.map(function(w,i){var used=p.words.slice(0,S.filled).indexOf(w)>=0;return '<button class="word" data-i="'+i+'" '+(used?"disabled":"")+'>'+esc(w)+'</button>'}).join("")+
-     '</div><div class="fb" id="fb"></div></div></div>'+resetRow();
-    HINT=function(lv){var ans=p.words[S.filled];if(lv<2){note("힌트: 이 빈칸의 낱말은 ‘"+ans.charAt(0)+"’(으)로 시작하고 "+ans.replace(/ /g,"").length+"글자예요.");return}var t=null;each(".word",function(b){if(!b.disabled&&bank[+b.getAttribute("data-i")]===ans)t=b});glowEl(t,"빛나는 도장을 눌러 보세요.")};
-    showHint();
-    each(".word",function(b){b.onclick=function(){
-      var w=bank[+b.getAttribute("data-i")];
-      if(w===p.words[S.filled]){S.filled++;S.miss=0;S.hlv=0;S.htxt="";drawNote();var hb=$("hintbtn");if(hb)hb.remove();save();
-        if(S.filled>=p.words.length){draw();fb("good","빈칸을 모두 채웠다. 그런데 어딘가 이상한 문장이 하나 있다…");setTimeout(function(){S.phase="fix";S.fixStep=0;S.fixOpts=null;save();render()},1600)}else draw();
-      }else{inkFx();penalize("먹물이 번졌다! 그 자리에 들어갈 말이 아니에요.")}
-    }});
-    bindReset();
-  }
-  draw();
+
+/* ---------- 모둠: 문제 ---------- */
+function head(){
+  var p=PAGES[S.page];
+  return '<header class="bar"><div><div class="who">'+esc(S.name)+(T&&T.n?' · 조장 '+esc(T.n):'')+' · '+esc(p.chap)+'</div><div class="soft" style="margin:0">'+esc(p.topic)+'</div></div>'+
+   '<div class="qdots">'+p.qs.map(function(_,i){return '<span class="'+(i<S.qi||(i===S.qi&&S.solved)?"ok":i===S.qi?"on":"")+'">'+(i+1)+'</span>'}).join("")+'<span class="lock">?</span></div></header>';
 }
-function renderFix(){
-  var p=PAGES[S.page];if(!S.fixOpts){S.fixOpts=shuffle([p.good].concat(p.wrongFix));save()}
-  if(S.fixStep===0){
-    app.innerHTML=bar()+'<div class="fade col" id="sh"><div class="note-book"><div class="lab">③ 바로잡기</div><div class="nb-body">'+bodyHTML(p,"fix")+'</div></div>'+
-     '<div class="card"><p class="task">이 마당에는 누군가 몰래 고쳐 쓴 <b class="red">거짓 문장</b>이 하나 있어요. 위 글에서 그 문장을 눌러 보세요.</p><div class="fb" id="fb"></div></div></div>'+resetRow();
-    HINT=function(lv){if(lv<2){note("힌트: 오늘 수업에서 배운 내용과 반대로 쓰인 문장을 찾아보세요.");return}glowEl(app.querySelector('.sent[data-s="F"]'),"빛나는 문장이 거짓이에요.")};
-    each(".sent",function(b){b.onclick=function(){if(b.getAttribute("data-s")==="F"){S.fixStep=1;S.miss=0;S.hlv=0;save();render()}else{b.classList.add("no");b.disabled=true;inkFx();penalize("그 문장은 사실이에요.")}}});
-  }else{
-    app.innerHTML=bar()+'<div class="fade col" id="sh"><div class="note-book"><div class="lab">거짓 문장</div><div class="nb-body forged">'+esc(p.bad)+'</div></div>'+
-     '<div class="card"><div class="lab">무엇으로 고쳐 쓸까?</div><div class="fixopts">'+S.fixOpts.map(function(o,i){return '<button class="fixopt" data-i="'+i+'">'+esc(o)+'</button>'}).join("")+'</div><div class="fb" id="fb"></div></div></div>'+resetRow();
-    HINT=function(lv){if(lv<2){note("힌트: 이 마당의 주제는 ‘"+p.topic+"’이에요. PPT에서 배운 내용을 떠올려 보세요.");return}var t=null;each(".fixopt",function(b){if(S.fixOpts[+b.getAttribute("data-i")]===p.good)t=b});glowEl(t,"빛나는 문장이 사실이에요.")};
-    each(".fixopt",function(b){b.onclick=function(){
-      if(S.fixOpts[+b.getAttribute("data-i")]===p.good){each(".fixopt",function(x){x.disabled=true});b.classList.add("right");fb("good","바로잡았다! 흥부전 한 마당이 온전히 되살아났다.");setTimeout(pageDone,1300)}
-      else{b.disabled=true;b.classList.add("wrong");inkFx();penalize("그것도 사실이 아니에요.")}}});
-  }
-  bindReset();
+function imgBox(k,cap,id){return '<figure class="pic"><div class="pic-in" id="'+(id||"")+'"><img src="'+IMG[k]+'" alt="'+esc(cap||"")+'"></div>'+(cap?'<figcaption>'+esc(cap)+'</figcaption>':'')+'</figure>'}
+function renderQuiz(){
+  var p=PAGES[S.page],q=p.qs[S.qi],st=S.st;
+  var h=head()+'<div class="fade col" id="sh"><div class="card qcard"><div class="lab">문제 '+(S.qi+1)+' / '+p.qs.length+'</div>';
+  if(q.src)h+='<blockquote class="src"><p>'+esc(q.src)+'</p><cite>— '+esc(q.srcBy)+'</cite></blockquote>';
+  if(q.fig)h+=q.fig;
+  if(q.img&&q.type!=="tap")h+=imgBox(q.img,q.cap);
+  if(q.imgs)h+='<div class="trio">'+q.imgs.map(function(k,i){return imgBox(k,q.left[i])}).join("")+'</div>';
+  h+='<p class="task">'+esc(q.q)+'</p>';
+  if(q.type==="mc"){if(!st.order){st.order=q.two?[0,1]:shuffle(q.opts.map(function(_,i){return i}));save()}
+    h+='<div class="opts'+(q.two?" two":"")+'">'+st.order.map(function(k,n){var cls=S.solved&&k===q.a?" right":(st.out||[]).indexOf(k)>=0?" wrong":"";return '<button class="opt'+cls+'" data-k="'+k+'" '+(S.solved||(st.out||[]).indexOf(k)>=0?"disabled":"")+'><b>'+(q.two?"":(n+1)+".")+'</b>'+esc(q.opts[k])+'</button>'}).join("")+'</div>'}
+  else if(q.type==="ox"){h+='<div class="oxs"><button class="ox o" data-v="1" '+(S.solved?"disabled":"")+'>O</button><button class="ox x" data-v="0" '+(S.solved?"disabled":"")+'>X</button></div>'}
+  else if(q.type==="multi"){st.sel=st.sel||[];h+='<div class="opts">'+q.opts.map(function(o,k){var on=st.sel.indexOf(k)>=0;return '<button class="opt chk'+(on?" sel":"")+'" data-k="'+k+'" '+(S.solved?"disabled":"")+'><b>'+(on?"☑":"☐")+'</b>'+esc(o)+'</button>'}).join("")+'</div>'+(S.solved?'':'<div class="row center"><button class="btn main" id="chk">다 골랐어요</button></div>')}
+  else if(q.type==="match"){st.sel=st.sel||q.left.map(function(){return -1});
+    h+='<div class="match">'+q.left.map(function(l,i){return '<div class="mrow"><div class="ml">'+esc(l)+'</div><div class="mr">'+q.right.map(function(r,k){return '<button class="chip'+(st.sel[i]===k?" sel":"")+'" data-i="'+i+'" data-k="'+k+'" '+(S.solved?"disabled":"")+'>'+esc(r)+'</button>'}).join("")+'</div></div>'}).join("")+'</div>'+(S.solved?'':'<div class="row center"><button class="btn main" id="chk">짝 맞추기 확인</button></div>')}
+  else if(q.type==="blanks"){var words=[];q.text.replace(/\[([^\]]+)\]/g,function(_,w){words.push(w)});st.n=st.n||0;if(S.solved)st.n=words.length;if(!st.bank){st.bank=shuffle(words.concat(q.extra));save()}
+    var bi=0;h+='<div class="note-book"><div class="nb-body">'+esc(q.text).replace(/\[([^\]]+)\]/g,function(_,w){var k=bi++;return k<st.n?'<span class="blank filled">'+w+'</span>':'<span class="blank'+(k===st.n?" cur":"")+'">&nbsp;</span>'})+'</div></div>'+
+     '<div class="words">'+st.bank.map(function(w,i){var used=words.slice(0,st.n).indexOf(w)>=0;return '<button class="word" data-i="'+i+'" '+(used||S.solved?"disabled":"")+'>'+esc(w)+'</button>'}).join("")+'</div>'}
+  else if(q.type==="tap"){h+='<div class="tapguide"><span class="ar">▼</span><span>그림을 손가락으로 톡 눌러 보세요!</span></div>'+imgBox(q.img,q.cap,"tapbox")}
+  h+='<div class="fb'+(S.solved?" good":S.tries?" bad":"")+'" id="fb">'+fbText(q)+'</div>'+(S.solved?'<div class="row end"><button class="btn main big" id="nx">'+(S.qi<p.qs.length-1?"다음 문제 →":"글자 받기 →")+'</button></div>':'')+'</div></div>'+resetRow();
+  app.innerHTML=h;bind(q,st);bindReset();
 }
-function pageDone(){S.end=Date.now();S.stage="letter";save();var hb=$("hintbtn");if(hb)hb.remove();var o=$("hintnote");if(o)o.remove();
-  modal.innerHTML='<div class="reveal" role="dialog" aria-label="글자 얻음"><div class="rv-inner"><div class="rv-lbl">한 마당을 되살렸다 · 붉은 글자를 얻었다</div><div class="rv-got">'+esc(T.l)+'</div><div class="rv-name">'+esc(S.name)+'</div><div class="rv-sub">이 글자를 기억하세요. 발표 시간에 다른 모둠의 글자와 모아 한마디를 완성합니다.</div><button class="btn main big" id="cgo">결과 보기</button></div></div>';
+function fbText(q){
+  if(S.solved)return '<b>정답이에요!</b> '+esc(q.e);
+  if(!S.tries)return "";
+  if(S.tries===1)return "다시 생각해 보세요.";
+  return '다시 생각해 보세요. <span class="hint">힌트 · '+esc(q.hint)+'</span>';
+}
+function miss(){
+  S.tries++;S.wrong[S.qi]=(S.wrong[S.qi]||0)+1;save();
+  var f=$("fb");if(f){f.className="fb bad";f.innerHTML=fbText(PAGES[S.page].qs[S.qi])}
+  var sh=$("sh");if(sh){sh.classList.remove("shake");void sh.offsetWidth;sh.classList.add("shake")}
+}
+function ok(){S.solved=true;save();renderQuiz();var f=$("fb");if(f)try{f.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}}
+function bind(q,st){
+  var nx=$("nx");if(nx)nx.onclick=function(){var p=PAGES[S.page];if(S.qi<p.qs.length-1){S.qi++;S.tries=0;S.solved=false;S.st={};save();render()}else pageDone()};
+  if(S.solved)return;
+  if(q.type==="mc")each(".opt",function(b){b.onclick=function(){var k=+b.getAttribute("data-k");if(k===q.a)ok();else{st.out=(st.out||[]).concat([k]);b.disabled=true;b.classList.add("wrong");save();miss()}}});
+  if(q.type==="ox")each(".ox",function(b){b.onclick=function(){if((b.getAttribute("data-v")==="1")===q.a)ok();else{b.classList.add("wrong");miss()}}});
+  if(q.type==="multi"){each(".opt",function(b){b.onclick=function(){var k=+b.getAttribute("data-k"),i=st.sel.indexOf(k);if(i>=0)st.sel.splice(i,1);else st.sel.push(k);save();var on=st.sel.indexOf(k)>=0;b.classList.toggle("sel",on);b.querySelector("b").textContent=on?"☑":"☐"}});
+    $("chk").onclick=function(){var a=q.a.slice().sort().join(),s=st.sel.slice().sort().join();if(a===s)ok();else miss()}}
+  if(q.type==="match"){each(".chip",function(b){b.onclick=function(){var i=+b.getAttribute("data-i"),k=+b.getAttribute("data-k");st.sel[i]=k;save();each('.chip[data-i="'+i+'"]',function(c){c.classList.toggle("sel",c===b)})}});
+    $("chk").onclick=function(){if(st.sel.indexOf(-1)>=0){var f=$("fb");f.className="fb";f.textContent="아직 고르지 않은 짝이 있어요.";return}if(st.sel.every(function(k,i){return k===q.a[i]}))ok();else miss()}}
+  if(q.type==="blanks"){var words=[];q.text.replace(/\[([^\]]+)\]/g,function(_,w){words.push(w)});
+    each(".word",function(b){b.onclick=function(){var w=st.bank[+b.getAttribute("data-i")];if(w===words[st.n]){st.n++;save();if(st.n>=words.length)ok();else renderQuiz()}else miss()}})}
+  if(q.type==="tap"){var box=$("tapbox");
+    box.querySelector("img").onclick=function(e){var r=box.getBoundingClientRect(),m=document.createElement("span");m.className="miss";m.style.left=(e.clientX-r.left)+"px";m.style.top=(e.clientY-r.top)+"px";box.appendChild(m);setTimeout(function(){m.remove()},700);miss()};
+    q.decoys.concat([q.spot]).forEach(function(r,i,arr){var real=i===arr.length-1,b=document.createElement("button");b.className="hot";b.setAttribute("aria-label","그림 속 한 곳");
+      b.style.left=r[0]+"%";b.style.top=r[1]+"%";b.style.width=r[2]+"%";b.style.height=r[3]+"%";
+      b.onclick=function(e){e.stopPropagation();if(real){b.classList.add("found");setTimeout(ok,700)}else{b.classList.add("nope");b.disabled=true;miss()}};box.appendChild(b)})}
+}
+function pageDone(){
+  S.stage="letter";save();
+  modal.innerHTML='<div class="reveal" role="dialog" aria-label="글자 얻음"><div class="rv-inner"><div class="rv-lbl">다섯 문제를 모두 풀었다 · 붉은 글자를 얻었다</div><div class="rv-got">'+esc(T.l)+'</div><div class="rv-name">'+esc(S.name)+'</div><div class="rv-sub">이 글자를 기억하세요. 발표 시간에 다른 모둠의 글자와 모아 한마디를 완성합니다.</div><button class="btn main big" id="cgo">결과 보기</button></div></div>';
   $("cgo").onclick=function(){modal.innerHTML="";render()};
 }
 function renderLetter(){
-  var p=PAGES[S.page],wb=S.wrongBy||{},mw=S.missWord||{};
-  var hard=Object.keys(mw).sort(function(a,b){return mw[b]-mw[a]});
+  var p=PAGES[S.page],w=S.wrong,mx=Math.max.apply(null,w),hi=w.indexOf(mx);
   app.innerHTML='<div class="fade col"><div class="lab">'+esc(S.name)+' · '+esc(p.chap)+' 완성</div><h1 class="h1">우리 모둠의 글자</h1>'+
    '<div class="card"><div class="row sb"><div class="bigl">'+esc(T.l)+'</div><div class="stamp">완<br>성</div></div>'+
-   '<dl class="meta"><dt>맡은 마당</dt><dd>'+esc(p.chap)+' · '+esc(p.name)+'</dd><dt>배운 내용</dt><dd>'+esc(p.topic)+'</dd><dt>걸린 시간</dt><dd>'+fmt((S.end-S.start)/1000)+'</dd><dt>틀린 횟수</dt><dd>그림 '+(wb.find||0)+' · 빈칸 '+(wb.fill||0)+' · 바로잡기 '+(wb.fix||0)+'</dd></dl></div>'+
-   '<div class="card"><div class="lab">발표 준비</div>'+(hard.length?'<p>우리 모둠이 가장 헷갈린 문제: <b class="red">'+esc(hard[0])+'</b> ('+mw[hard[0]]+'번 틀림)</p>':'<p>한 번도 틀리지 않았어요. 가장 어려웠던 문제를 하나 골라 발표해요.</p>')+
+   '<dl class="meta"><dt>맡은 마당</dt><dd>'+esc(p.chap)+' · '+esc(p.name)+'</dd><dt>배운 내용</dt><dd>'+esc(p.topic)+'</dd><dt>틀린 횟수</dt><dd>'+w.map(function(x,i){return (i+1)+"번 "+x}).join(" · ")+'</dd></dl></div>'+
+   '<div class="card"><div class="lab">발표 준비</div>'+(mx>0?'<p>우리 모둠이 가장 헷갈린 문제: <b class="red">'+(hi+1)+'번</b> ('+mx+'번 틀림)</p><p class="soft">“'+esc(p.qs[hi].q)+'” → '+esc(p.qs[hi].e)+'</p>':'<p>한 번도 틀리지 않았어요. 가장 어려웠던 문제를 하나 골라 발표해요.</p>')+
    '<ol class="rules"><li>어려웠던 문제와 정답, 그 이유를 말한다.</li><li>마지막에 우리 모둠의 글자 <b class="red">‘'+esc(T.l)+'’</b>을(를) 외친다.</li></ol></div>'+
-   '<div class="note-book"><div class="lab">되살린 마당</div><div class="nb-body">'+bodyHTML(p,"done")+'</div></div>'+
+   '<div class="card"><div class="lab">오늘 우리 마당에서 배운 것</div><ol class="rules">'+p.qs.map(function(q){return '<li>'+esc(q.e)+'</li>'}).join("")+'</ol></div>'+
    '<div class="row"><button class="btn" id="rs">⌂ 처음으로</button></div></div>';
   $("rs").onclick=confirmReset;
 }
@@ -727,7 +789,7 @@ function bindReset(){var r=$("rs");if(r)r.onclick=confirmReset}
 function confirmReset(){
   modal.innerHTML='<div class="overlay"><div class="card fade"><h2>처음 화면으로 갈까요?</h2><p>우리 모둠의 진행 기록이 사라지고 처음부터 다시 시작해요. 맡은 마당과 글자는 같아요.</p><div class="row"><button class="btn main" id="yes">처음으로</button><button class="btn" id="no">취소</button></div></div></div>';
   $("no").onclick=function(){modal.innerHTML=""};
-  $("yes").onclick=function(){S=blank();save();modal.innerHTML="";render()};
+  $("yes").onclick=function(){clearT();S=blank();save();modal.innerHTML="";render()};
 }
 
 /* ---------- 선생님 화면 ---------- */
@@ -738,10 +800,11 @@ function newT(){return {k:Math.random().toString(36).slice(2,7),groups:GROUPS0.s
 function baseUrl(){return /\.(netlify\.app|github\.io)$/.test(location.hostname)?location.origin+location.pathname:PUBLIC_URL}
 function leaderOf(s){return String(s||"").split(/[,\s]+/).filter(Boolean)[0]||""}
 function ticketUrl(t,g){var o={g:g,c:g-1,l:CODE[g-1],k:t.k},n=leaderOf(t.groups[g-1]);if(n)o.n=n;return baseUrl()+"?v="+BUILD+"&t="+enc(o)}
+function ldHTML(s){var n=leaderOf(s);return '<span class="ldt">조장</span><b>'+(n?esc(n):"?")+'</b>'+TAB}
 function renderTeacher(){
   var t=tLoad();if(!t){t=newT();tSave(t)}
   if(t.view==="reveal")return renderReveal(t);
-  app.innerHTML='<div class="fade col wide"><div class="center"><div class="lab">조선 후기 생활과 문화 · 3학년 6반 · 선생님 화면</div><h1 class="h1">흥부전 조각 맞추기</h1><p class="soft">조장이 탭으로 자기 모둠 QR을 찍으면 시작합니다. 모둠마다 흥부전 한 마당을 되살리고 붉은 글자 하나를 얻습니다.</p></div>'+
+  app.innerHTML='<div class="fade col wide"><div class="center"><div class="lab">조선 후기 생활과 문화 · 3학년 6반 · 선생님 화면</div><h1 class="h1">흥부전 조각 맞추기</h1><p class="soft">조장이 탭으로 자기 모둠 QR을 찍으면 시작합니다. 흥부전 한 마당을 보고 문제 다섯 개를 풀면 붉은 글자 하나를 얻습니다.</p></div>'+
    '<div class="row center"><button class="btn" id="tog">'+(t.show?"배정 숨기기":"배정 보기 (선생님만)")+'</button><button class="btn main" id="rv">발표 · 한마디 완성 화면 →</button></div>'+
    '<div class="gcards">'+[1,2,3,4,5].map(function(g){var p=PAGES[g-1];return '<div class="gcard"><div class="gh"><span class="gn">'+g+'모둠</span>'+(t.show?'<span class="gl">'+esc(p.chap)+' · <b>'+CODE[g-1]+'</b></span>':'')+'</div>'+
      '<div class="qrbox" id="qr'+g+'"></div><div class="ld" id="ld'+g+'">'+ldHTML(t.groups[g-1])+'</div>'+
@@ -757,7 +820,6 @@ function renderTeacher(){
     $("no").onclick=function(){modal.innerHTML=""};$("yes").onclick=function(){t.k=Math.random().toString(36).slice(2,7);t.revealed=[];tSave(t);modal.innerHTML="";renderTeacher()};
   };
 }
-function ldHTML(s){var n=leaderOf(s);return '<span class="ldt">조장</span><b>'+(n?esc(n):"?")+'</b>'+TAB}
 function renderReveal(t){
   var rv=t.revealed||[],done=rv.length===5;
   app.innerHTML='<div class="fade col wide"><div class="center"><div class="lab">3학년 6반 · 발표 · 한마디 완성</div><h1 class="h1">다섯 글자를 모아라</h1><p class="soft">모둠이 어려웠던 문제를 발표하고 글자를 외치면, 그 모둠 버튼을 누르세요.</p></div>'+
@@ -774,15 +836,14 @@ function renderReveal(t){
   };
 }
 function render(){
-  window.scrollTo(0,0);window.onresize=null;
+  window.scrollTo(0,0);clearT();
   if(!T){document.body.classList.add("teacher");renderTeacher();return}
-  var hb=$("hintbtn");if(hb)hb.remove();HINT=null;
-  var key=S.stage+"|"+S.phase+"|"+S.fixStep;if(S.mkey!==key){S.mkey=key;S.miss=0;S.hlv=0;S.htxt="";save()}
   if(S.stage==="intro")renderIntro();
-  else if(S.stage==="letter")renderLetter();
-  else ({find:renderFind,fill:renderFill,fix:renderFix})[S.phase]();
-  drawNote();showHint();
+  else if(S.stage==="movie")renderMovie();
+  else if(S.stage==="quiz")renderQuiz();
+  else renderLetter();
 }
+window.__HG=PAGES;
 render();
 })();
 </script>
