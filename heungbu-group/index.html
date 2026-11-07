@@ -243,6 +243,12 @@ button:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline
 .hardtag{display:inline-block;margin-left:8px;background:var(--red);color:#fff;border-radius:6px;padding:0 8px;font-size:14px;letter-spacing:0;vertical-align:1px}
 .srctag{display:inline-block;font-size:13px;background:var(--wood);color:#fff;border-radius:4px;padding:0 6px;margin-bottom:6px}
 
+/* v4: 여러 곳 찾기 */
+.hot.mark{pointer-events:none}
+.spotname{position:absolute;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%);white-space:nowrap;background:var(--green);color:#fff;font-size:15px;padding:1px 8px;border-radius:6px}
+.found-count{text-align:center;font-family:var(--display);font-size:20px;margin:0}
+.found-count b{color:var(--green);font-weight:400}
+
 /* ---------- 인물 ---------- */
 .fc{display:none}
 .mood-neutral .f-neutral,.mood-sad .f-sad,.mood-shock .f-shock,.mood-happy .f-happy,.mood-smug .f-smug,.mood-angry .f-angry{display:inline}
@@ -655,12 +661,12 @@ var PAGES=[
  {chap:"넷째 마당",name:"슬근슬근 박 타기",topic:"판소리",art:"s4",
   movie:["강남에서 돌아온 제비가 박씨 한 알을 물어 왔어요.","“슬근슬근 톱질이야!” 박을 타자 금은보화가 와르르!","이 노랫가락은 어떻게 오늘날까지 전해졌을까요?"],
   qs:[
-   {type:"tap",img:"pyeongyang",cap:"「평양도」 10폭 병풍 일부",q:"이 그림에서 판소리 공연을 하는 장면은 어디일까요?",how:"부채를 든 소리꾼과 북을 든 고수가 있는 곳을 손가락으로 직접 눌러 보세요. 맞으면 초록 테두리가 생겨요.",spot:[32,33,20,36],decoys:[[57,30,21,36],[8,28,22,40],[0,0,28,24],[70,0,30,24]],
-    hint:"그림 가운데 노란 돗자리 위를 살펴보세요.",e:"부채를 든 소리꾼과 북을 치는 고수가 판소리를 하고, 많은 사람이 구경하고 있어요."},
+   {type:"tap",img:"pyeongyang",cap:"「평양도」 10폭 병풍 일부",q:"이 그림에서 판소리를 하는 소리꾼과 고수를 각각 찾아보세요.",how:"소리꾼 한 번, 고수 한 번, 모두 두 곳을 손가락으로 직접 눌러 보세요. 찾은 곳에는 초록 테두리와 이름이 생겨요.",spots:[{n:"소리꾼",r:[32.5,36,10,31]},{n:"고수",r:[43,42,10,25]}],decoys:[[57,30,21,36],[8,28,22,40],[0,0,28,24],[70,0,30,24]],
+    hint:"그림 가운데 노란 돗자리 위, 부채를 든 사람이 소리꾼이고 북 앞에 앉은 사람이 고수예요.",e:"부채를 든 소리꾼과 북을 치는 고수가 판소리를 하고, 많은 사람이 구경하고 있어요."},
    {type:"match",q:"판소리를 하는 두 사람과 하는 일을 짝지어 보세요.",left:["고수","소리꾼"],right:["북을 치며 장단을 맞춘다","노래, 말, 몸짓으로 이야기를 들려준다"],a:[0,1],
     hint:"방금 그림에서 북을 들고 있던 사람이 고수예요.",e:"한 명의 소리꾼이 고수의 북장단에 맞추어 노래, 말, 몸짓으로 긴 이야기를 들려줘요."},
-   {type:"multi",hard:true,q:"다음 가운데 판소리 작품을 모두 골라 보세요.",opts:["춘향가","심청가","흥부가","수궁가","적벽가","홍길동전","아리랑"],a:[0,1,2,3,4],
-    hint:"정답은 5개예요. 이름이 ‘노래’를 뜻하는 ‘가’로 끝나는 것을 찾아보세요.",e:"춘향가, 심청가, 흥부가, 수궁가, 적벽가가 오늘날 전해지는 판소리예요. 「홍길동전」은 한글 소설이에요."},
+   {type:"multi",hard:true,q:"다음 가운데 판소리 작품을 모두 골라 보세요.",opts:["춘향가","흥부가","수궁가","홍길동전","아리랑"],a:[0,1,2],
+    hint:"정답은 3개예요. 이름이 ‘노래’를 뜻하는 ‘가’로 끝나는 것을 찾아보세요.",e:"춘향가, 흥부가, 수궁가는 판소리예요(판소리에는 심청가, 적벽가도 있어요). 「홍길동전」은 한글 소설, 「아리랑」은 민요예요."},
    {type:"ox",q:"판소리는 궁궐 안에서 왕만 즐길 수 있었다.",a:false,
     hint:"방금 찾은 「평양도」 속 판소리는 어디에서, 누가 보고 있었나요?",e:"판소리는 바깥 마당과 저잣거리에서 많은 사람이 함께 즐겼어요."},
    {type:"blanks",q:"오늘 배운 내용을 한 줄로 정리해 보세요.",text:"조선 후기 [한글 소설], [판소리] 등의 [서민] 문화가 꽃피면서 흥부의 이야기가 우리에게 전해졌다.",swap:[0,1],extra:["양반","왕실","탈춤","한문 소설"],
@@ -760,7 +766,9 @@ function head(){
   return '<header class="bar"><div><div class="who">'+esc(S.name)+(T&&T.n?' · 조장 '+esc(T.n):'')+' · '+esc(p.chap)+'</div><div class="soft" style="margin:0">'+esc(p.topic)+'</div></div>'+
    '<div class="qdots">'+p.qs.map(function(_,i){return '<span class="'+(i<S.qi||(i===S.qi&&S.solved)?"ok":i===S.qi?"on":"")+'">'+(i+1)+'</span>'}).join("")+'<span class="lock">?</span></div></header>';
 }
-function imgBox(k,cap,id){return '<figure class="pic"><div class="pic-in" id="'+(id||"")+'"><img src="'+IMG[k]+'" alt="'+esc(cap||"")+'"></div>'+(cap?'<figcaption>'+esc(cap)+'</figcaption>':'')+'</figure>'}
+function spotsOf(q){return q.spots||[{n:"",r:q.spot}]}
+function markHTML(s){var r=s.r;return '<span class="hot found mark" style="left:'+r[0]+'%;top:'+r[1]+'%;width:'+r[2]+'%;height:'+r[3]+'%">'+(s.n?'<b class="spotname">'+esc(s.n)+'</b>':'')+'</span>'}
+function imgBox(k,cap,id,extra){return '<figure class="pic"><div class="pic-in" id="'+(id||"")+'"><img src="'+IMG[k]+'" alt="'+esc(cap||"")+'">'+(extra||"")+'</div>'+(cap?'<figcaption>'+esc(cap)+'</figcaption>':'')+'</figure>'}
 function renderQuiz(){
   var p=PAGES[S.page],q=p.qs[S.qi],st=S.st;
   var h=head()+'<div class="fade col" id="sh"><div class="card qcard"><div class="lab">문제 '+(S.qi+1)+' / '+p.qs.length+(q.hard?' <span class="hardtag">도전</span>':'')+'</div>';
@@ -778,7 +786,8 @@ function renderQuiz(){
   else if(q.type==="blanks"){var words=[];q.text.replace(/\[([^\]]+)\]/g,function(_,w){words.push(w)});st.n=st.n||0;if(S.solved)st.n=words.length;if(!st.bank){st.bank=shuffle(words.concat(q.extra));save()}
     var bi=0;st.fill=st.fill||[];h+='<div class="note-book"><div class="nb-body">'+esc(q.text).replace(/\[([^\]]+)\]/g,function(_,w){var k=bi++;return k<st.n?'<span class="blank filled">'+(st.fill[k]||w)+'</span>':'<span class="blank'+(k===st.n?" cur":"")+'">&nbsp;</span>'})+'</div></div>'+
      '<div class="words">'+st.bank.map(function(w,i){var used=(S.solved?words:(st.fill||[]).slice(0,st.n)).indexOf(w)>=0;return '<button class="word" data-i="'+i+'" '+(used||S.solved?"disabled":"")+'>'+esc(w)+'</button>'}).join("")+'</div>'}
-  else if(q.type==="tap"){h+=imgBox(q.img,q.cap,"tapbox")}
+  else if(q.type==="tap"){var sp=spotsOf(q);st.found=st.found||[];h+=imgBox(q.img,q.cap,"tapbox",sp.filter(function(_,i){return S.solved||st.found.indexOf(i)>=0}).map(markHTML).join(""));
+    if(sp.length>1&&!S.solved)h+='<p class="found-count">찾은 곳 <b id="fcnt">'+st.found.length+'</b> / '+sp.length+'</p>'}
   h+='<div class="fb'+(S.solved?" good":S.tries?" bad":"")+'" id="fb">'+fbText(q)+'</div>'+(S.solved?'<div class="row end"><button class="btn main big" id="nx">'+(S.qi<p.qs.length-1?"다음 문제 →":"글자 받기 →")+'</button></div>':'')+'</div></div>'+resetRow();
   app.innerHTML=h;bind(q,st);bindReset();
 }
@@ -810,9 +819,15 @@ function bind(q,st){
       if(okW){st.fill[st.n]=w;st.n++;save();if(st.n>=words.length)ok();else renderQuiz()}else miss()}})}
   if(q.type==="tap"){var box=$("tapbox");
     box.querySelector("img").onclick=function(e){var r=box.getBoundingClientRect(),m=document.createElement("span");m.className="miss";m.style.left=(e.clientX-r.left)+"px";m.style.top=(e.clientY-r.top)+"px";box.appendChild(m);setTimeout(function(){m.remove()},700);miss()};
-    q.decoys.concat([q.spot]).forEach(function(r,i,arr){var real=i===arr.length-1,b=document.createElement("button");b.className="hot";b.setAttribute("aria-label","그림 속 한 곳");
+    var sp=spotsOf(q);
+    q.decoys.forEach(function(r){var b=document.createElement("button");b.className="hot";b.setAttribute("aria-label","그림 속 한 곳");
       b.style.left=r[0]+"%";b.style.top=r[1]+"%";b.style.width=r[2]+"%";b.style.height=r[3]+"%";
-      b.onclick=function(e){e.stopPropagation();if(real){b.classList.add("found");setTimeout(ok,700)}else{b.classList.add("nope");b.disabled=true;miss()}};box.appendChild(b)})}
+      b.onclick=function(e){e.stopPropagation();b.classList.add("nope");b.disabled=true;miss()};box.appendChild(b)});
+    sp.forEach(function(s,i){if(st.found.indexOf(i)>=0)return;var r=s.r,b=document.createElement("button");b.className="hot";b.setAttribute("aria-label","그림 속 한 곳");
+      b.style.left=r[0]+"%";b.style.top=r[1]+"%";b.style.width=r[2]+"%";b.style.height=r[3]+"%";
+      b.onclick=function(e){e.stopPropagation();b.remove();st.found.push(i);save();box.insertAdjacentHTML("beforeend",markHTML(s));
+        var c=$("fcnt");if(c)c.textContent=st.found.length;
+        if(st.found.length>=sp.length)setTimeout(ok,700);else{var f=$("fb");f.className="fb good";f.innerHTML="<b>‘"+esc(s.n)+"’을(를) 찾았어요!</b> 나머지 한 곳도 찾아보세요."}};box.appendChild(b)})}
 }
 function pageDone(){
   S.stage="letter";save();
