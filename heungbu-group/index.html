@@ -221,6 +221,23 @@ button:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline
 .note-book .nb-body .blank{min-width:3.6em}
 @media (max-width:600px){.mrow{grid-template-columns:1fr}.qdots span{width:28px;height:28px;font-size:15px}.trio .pic-in img{max-height:20vh}}
 
+/* ---------- 5모둠 화해 장면 ---------- */
+.scene.swap{opacity:0;transition:opacity .35s}
+.scene.swapin{animation:fade .5s ease-out}
+.ch.kneel .whole{animation:none;transform:translateY(26px) rotate(-16deg)}
+.ch.kneel .lgL,.ch.kneel .lgR{animation:none;transform:scaleY(.22)}
+.ch.kneel .armB{animation:beg .9s ease-in-out infinite alternate}
+.ch.kneel .armF{animation:none;transform:rotate(-24deg)}
+@keyframes beg{from{transform:rotate(58deg)}to{transform:rotate(76deg)}}
+.ch.kneel .hd{animation:sob 1.2s ease-in-out infinite}
+@keyframes sob{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(-2deg) translateY(2px)}}
+.bub-a,.bub-b,.sw6{transition:opacity .4s}
+.hearts{opacity:0;transition:opacity .4s}
+.made-up .hearts{opacity:1}
+.heart{animation:rise 1.6s ease-out infinite}
+@keyframes rise{from{transform:translateY(0) scale(.6);opacity:0}25%{opacity:1}to{transform:translateY(-70px) scale(1.1);opacity:0}}
+.subs .sub-line:nth-child(3){color:#ffd98a}
+
 /* ---------- 인물 ---------- */
 .fc{display:none}
 .mood-neutral .f-neutral,.mood-sad .f-sad,.mood-shock .f-shock,.mood-happy .f-happy,.mood-smug .f-smug,.mood-angry .f-angry{display:inline}
@@ -645,7 +662,8 @@ var PAGES=[
     hint:"‘노래’와 ‘글’이라는 말에 밑줄을 그어 보세요.",e:"한글 소설과 판소리 덕분에 흥부 이야기가 우리에게 전해졌어요."}
   ]},
  {chap:"다섯째 마당",name:"놀부도 박을 탔지만",topic:"풍속화와 민화",art:"s5",
-  movie:["샘이 난 놀부도 박씨를 심어 박을 탔어요.","그런데 보물 대신 도깨비가 튀어나왔지 뭐예요!","놀부, 흥부 같은 사람들의 삶은 그림으로도 남았어요."],
+  art2:"s6",art2At:5000,
+  movie:["샘이 난 놀부도 박을 탔지만, 도깨비가 튀어나와 쫄딱 망했어요.","빈털터리가 된 놀부는 흥부를 찾아가 무릎을 꿇었어요.","“아우야, 내 욕심이 지나쳤다. 내가 잘못했다!”","흥부는 형을 일으켜 세우고 재물을 나누었어요.","그 뒤로 두 형제는 사이좋게 지냈답니다."],
   qs:[
    {type:"match",imgs:["mudong","ssireum","yeonso"],q:"그림과 그린 화가를 짝지어 보세요.",left:["「무동」","「씨름」","「연소답청」"],right:["김홍도","신윤복"],a:[0,0,1],
     hint:"말을 탄 양반과 여인들이 봄나들이를 가는 그림은 다른 화가의 작품이에요.",e:"「무동」과 「씨름」은 김홍도, 「연소답청」은 신윤복의 그림이에요."},
@@ -659,6 +677,22 @@ var PAGES=[
     hint:"‘미상(未詳)’은 ‘자세히 알지 못한다’는 뜻이에요.",e:"민화는 이름이 알려지지 않은 서민 화가들이 많이 그렸어요."}
   ]}
 ];
+
+/* ---------- 5모둠: 놀부가 뉘우치고 화해하는 장면 ---------- */
+var HEART='<path d="M0 6 C-14 -6 -8 -18 0 -10 C8 -18 14 -6 0 6Z" fill="#e8604f" stroke="#3f332c" stroke-width="2"/>';
+ART.s6=function(){
+  return sky+ground+kiwa(334,300,.8)+coinPile(196,372,8)
+   +'<g class="hearts">'+[[176,250,0],[210,226,.5],[236,256,1]].map(function(h){return '<g transform="translate('+h[0]+' '+h[1]+')"><g class="heart" style="animation-delay:'+h[2]+'s">'+HEART+'</g></g>'}).join("")+'</g>'
+   +heung({x:108,y:362,s:1.08,mood:"neutral"})
+   +nol({x:268,y:364,s:1.02,mood:"sad",cls:"kneel"})
+   +'<g class="bub-a">'+bubble(176,96,["아우야,","내가 잘못했다!"],"","r")+'</g>'
+   +'<g class="bub-b" style="opacity:0">'+bubble(40,70,["형님, 일어나세요.","함께 잘 살아요!"],"","l")+'</g>'
+   +'<g class="sw6" style="opacity:0">'+swallow(318,62,.7,"circle",3)+'</g>';
+};
+TL.s6=function(root){var h=root.querySelector(".heung"),n=root.querySelector(".nol");return [
+  [2600,function(){mood(h,"happy");h.classList.add("reach");root.querySelector(".bub-a").style.opacity=0;root.querySelector(".bub-b").style.opacity=1}],
+  [4300,function(){n.classList.remove("kneel");mood(n,"happy");n.classList.add("joy");h.classList.remove("reach");h.classList.add("joy");root.classList.add("made-up");root.querySelector(".sw6").style.opacity=1}]
+]};
 
 /* ---------- 상태 ---------- */
 function enc(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).split("").reverse().join("").replace(/=/g,"")}
@@ -701,8 +735,12 @@ function renderMovie(){
    '<div class="row center"><button class="btn" id="again">↻ 다시 보기</button><button class="btn main big" id="next" disabled>문제 풀러 가기 →</button></div></div>';
   play();
   function play(){
-    clearT();var svg=app.querySelector(".mv svg");svg.innerHTML=ART[p.art]();svg.classList.remove("opened");
+    clearT();var svg=app.querySelector(".mv svg");svg.innerHTML=ART[p.art]();svg.setAttribute("class","scene sc-"+p.art);
     if(TL[p.art])TL[p.art](svg).forEach(function(x){timers.push(setTimeout(x[1],x[0]))});
+    if(p.art2)timers.push(setTimeout(function(){svg.classList.add("swap");timers.push(setTimeout(function(){
+      svg.innerHTML=ART[p.art2]();svg.setAttribute("class","scene sc-"+p.art2+" swapin");
+      if(TL[p.art2])TL[p.art2](svg).forEach(function(x){timers.push(setTimeout(x[1],x[0]))});
+    },350))},p.art2At));
     var sb=$("subs");sb.innerHTML="";
     p.movie.forEach(function(t,i){timers.push(setTimeout(function(){var d=document.createElement("p");d.className="sub-line";d.textContent=t;sb.appendChild(d)},400+i*2300))});
     timers.push(setTimeout(function(){var n=$("next");if(n){n.disabled=false;n.classList.add("ready")}},400+p.movie.length*2300-800));
