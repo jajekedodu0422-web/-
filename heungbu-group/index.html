@@ -249,6 +249,10 @@ button:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline
 .found-count{text-align:center;font-family:var(--display);font-size:20px;margin:0}
 .found-count b{color:var(--green);font-weight:400}
 
+/* v5: 실사풍 애니메이션 영상 */
+.film{width:100%;max-width:900px;aspect-ratio:16/9;border:6px solid #e2b33c;border-radius:8px;overflow:hidden;background:#0b0907}
+.film iframe{display:block;width:100%;height:100%;border:0}
+
 /* ---------- 인물 ---------- */
 .fc{display:none}
 .mood-neutral .f-neutral,.mood-sad .f-sad,.mood-shock .f-shock,.mood-happy .f-happy,.mood-smug .f-smug,.mood-angry .f-angry{display:inline}
@@ -605,7 +609,7 @@ function mood(el,m){if(!el)return;[...el.classList].filter(c=>c.startsWith("mood
 <script>
 (function(){
 "use strict";
-var BUILD="1106b",KEY="heungbu-group-v2",TKEY="heungbu-group-teacher-v2";
+var BUILD="1108a",KEY="heungbu-group-v2",TKEY="heungbu-group-teacher-v2";
 var PUBLIC_URL="https://jajekedodu0422-web.github.io/-/heungbu-group/";
 var CODE="착하게살자";
 var IMG={sinhaeng:"img/sinhaeng.jpg",seodang:"img/seodang.jpg",reading:"img/reading.jpg",pyeongyang:"img/pyeongyang.jpg",ssireum:"img/ssireum.jpg",mudong:"img/mudong.jpg",yeonso:"img/yeonso.jpg"};
@@ -738,26 +742,18 @@ function renderIntro(){
 }
 
 /* ---------- 모둠: 짧은 이야기 영상 ---------- */
+var FILM_LEN=[6,6.5,6,6.5,7];
 function renderMovie(){
-  var p=PAGES[S.page];
+  var p=PAGES[S.page],ch=S.page+1;
   app.innerHTML='<div class="fade col"><div class="movie"><div class="mv-top"><span class="lab light">'+esc(p.chap)+'</span><span class="mv-ttl">'+esc(p.name)+'</span></div>'+
-   '<div class="frame mv"><svg viewBox="0 0 400 400" class="scene sc-'+p.art+'" role="img" aria-label="'+esc(p.name)+' 장면">'+ART[p.art]()+'</svg></div>'+
-   '<div class="subs" id="subs"></div></div>'+
+   '<div class="film"><iframe id="film" src="film.html?v='+BUILD+'&ch='+ch+'" title="'+esc(p.name)+' 이야기 영상" allow="autoplay"></iframe></div></div>'+
    '<div class="row center"><button class="btn" id="again">↻ 다시 보기</button><button class="btn main big" id="next" disabled>문제 풀러 가기 →</button></div><p class="soft center">이야기가 끝나면 ‘문제 풀러 가기’ 버튼이 켜져요.</p></div>';
-  play();
-  function play(){
-    clearT();var svg=app.querySelector(".mv svg");svg.innerHTML=ART[p.art]();svg.setAttribute("class","scene sc-"+p.art);
-    if(TL[p.art])TL[p.art](svg).forEach(function(x){timers.push(setTimeout(x[1],x[0]))});
-    if(p.art2)timers.push(setTimeout(function(){svg.classList.add("swap");timers.push(setTimeout(function(){
-      svg.innerHTML=ART[p.art2]();svg.setAttribute("class","scene sc-"+p.art2+" swapin");
-      if(TL[p.art2])TL[p.art2](svg).forEach(function(x){timers.push(setTimeout(x[1],x[0]))});
-    },350))},p.art2At));
-    var sb=$("subs");sb.innerHTML="";
-    p.movie.forEach(function(t,i){timers.push(setTimeout(function(){var d=document.createElement("p");d.className="sub-line";d.textContent=t;sb.appendChild(d)},400+i*2300))});
-    timers.push(setTimeout(function(){var n=$("next");if(n){n.disabled=false;n.classList.add("ready")}},400+p.movie.length*2300-800));
-  }
-  $("again").onclick=play;
-  $("next").onclick=function(){clearT();S.stage="quiz";S.qi=0;S.tries=0;S.solved=false;S.st={};save();render()};
+  function ready(){var n=$("next");if(n&&n.disabled){n.disabled=false;n.classList.add("ready")}}
+  function arm(){clearT();timers.push(setTimeout(ready,(FILM_LEN[S.page]+3)*1000))}
+  window.onmessage=function(e){if(e.data&&e.data.film==="end")ready()};
+  arm();
+  $("again").onclick=function(){var f=$("film");try{f.contentWindow.postMessage({film:"replay"},"*")}catch(err){f.src=f.src}};
+  $("next").onclick=function(){clearT();window.onmessage=null;S.stage="quiz";S.qi=0;S.tries=0;S.solved=false;S.st={};save();render()};
 }
 
 /* ---------- 모둠: 문제 ---------- */
