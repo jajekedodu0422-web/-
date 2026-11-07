@@ -156,7 +156,7 @@ button:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline
 @media (max-width:600px){.gcards{grid-template-columns:1fr 1fr}.slots5{gap:6px}.meter b{font-size:22px}body{font-size:17px}}
 @media (prefers-reduced-motion:reduce){.shake,.fade,.tapguide .ar,.blank.cur,.miss,.rv-got,.rv-lbl,.rv-name,.rv-sub,.reveal .btn,.slot5.on .sl{animation:none}}
 
-.nb-body>span,.nb-body>button.sent{display:block;padding:0 3px}
+.nb-body>span:not(.blank),.nb-body>button.sent{display:block;padding:0 3px}
 /* ---------- v2: 이야기 영상 ---------- */
 .movie{background:#3a2214;border-radius:18px;padding:16px;box-shadow:0 18px 40px rgba(60,35,15,.35),inset 0 0 0 4px #5a3420;display:grid;gap:12px;justify-items:center}
 .mv-top{display:flex;gap:12px;align-items:baseline;justify-content:center;flex-wrap:wrap}
@@ -237,6 +237,11 @@ button:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline
 .heart{animation:rise 1.6s ease-out infinite}
 @keyframes rise{from{transform:translateY(0) scale(.6);opacity:0}25%{opacity:1}to{transform:translateY(-70px) scale(1.1);opacity:0}}
 .subs .sub-line:nth-child(3){color:#ffd98a}
+
+/* v3: 안내 문구 · 도전 표시 */
+.how{margin:-4px 0 0;font-size:clamp(15px,2vw,17px);color:#2f5a7a;background:#e8f1f8;border-radius:8px;padding:8px 12px;word-break:keep-all}
+.hardtag{display:inline-block;margin-left:8px;background:var(--red);color:#fff;border-radius:6px;padding:0 8px;font-size:14px;letter-spacing:0;vertical-align:1px}
+.srctag{display:inline-block;font-size:13px;background:var(--wood);color:#fff;border-radius:4px;padding:0 6px;margin-bottom:6px}
 
 /* ---------- 인물 ---------- */
 .fc{display:none}
@@ -610,14 +615,14 @@ var PAGES=[
     hint:"‘어찌 구별하겠는가?’는 ‘구별하지 않는다’는 뜻이에요.",e:"조선 전기에는 아들딸을 구별하지 않고 재산을 고르게 나누었어요."},
    {type:"mc",src:"남매가 재산을 공평하게 나누면 제사도 똑같이 돌아가며 지내야 한다. 사대부가의 딸들은 시집간 후 본가의 제사를 마음대로 실행하지 못하니 … 딸에게 몫을 나눠 주되 약간을 감하고, 본가의 제사를 돌아가며 지내지 말라.",srcBy:"오재훈 남매의 상속 문서(1701)",
     q:"이 문서는 딸의 몫을 어떻게 하라고 했나요?",opts:["아들보다 더 많이 준다","아들과 똑같이 준다","조금 줄여서 준다","전혀 주지 않는다"],a:2,
-    hint:"‘감하다’는 ‘덜다, 줄이다’라는 뜻이에요.",e:"조선 후기에는 딸의 몫이 줄고, 제사도 돌아가며 지내지 않게 되었어요."},
-   {type:"mc",fig:'<div class="figs"><div class="fg"><b>(가)</b>'+bars([3,3,3])+'</div><div class="fg"><b>(나)</b>'+bars([5,3,1])+'</div></div><p class="figcap">네모 칸은 물려받은 재산의 양을 나타낸 예시예요.</p>',
-    q:"조선 후기의 재산 상속을 나타낸 그림은 어느 것일까요?",opts:["(가)","(나)"],a:1,two:true,
-    hint:"조선 후기에는 제사를 맡은 사람이 재산을 더 많이 받았어요.",e:"(나)처럼 제사를 맡은 큰아들이 가장 많이 받았어요. (가)는 조선 전기의 모습이에요."},
-   {type:"ox",q:"조선 후기에는 아들과 딸이 재산을 똑같이 나눠 받는 것이 일반적이었다.",a:false,
-    hint:"방금 읽은 1701년 오재훈 남매의 상속 문서를 떠올려 보세요.",e:"조선 후기에는 큰아들을 우대하고 딸의 몫은 줄었어요."},
-   {type:"mc",q:"그렇다면 놀부가 부자가 된 까닭으로 가장 알맞은 것은?",opts:["남의 재산을 빼앗고 다녀서","큰아들이라 부모의 재산을 많이 물려받아서","장사를 잘해서","과거에 급제해서"],a:1,
-    hint:"놀부는 흥부의 형이에요. 집안에서 몇째 아들일까요?",e:"놀부는 큰아들이라 상속에서 우대를 받았어요."}
+    hint:"‘감하다’는 ‘덜다, 줄이다’라는 뜻이에요.",e:"조선 후기에는 시집간 딸이 제사를 지내지 못해 몫이 줄었어요."},
+   {type:"ox",q:"조선 후기에는 아들과 딸이 재산을 똑같이 나눠 받았다.",a:false,
+    hint:"방금 읽은 오재훈 남매의 상속 문서를 떠올려 보세요.",e:"조선 후기에는 큰아들을 우대하고 딸의 몫은 줄었어요."},
+   {type:"mc",q:"조선 후기에 큰아들이 재산을 더 많이 물려받은 까닭은 무엇일까요?",opts:["집안의 제사를 혼자 맡았기 때문에","나이가 가장 많아 힘이 세서","과거 시험에 꼭 합격해야 해서","딸보다 글을 잘 읽어서"],a:0,
+    hint:"조선 후기 집안에서 큰아들만 맡은 중요한 일은 무엇이었나요?",e:"큰아들이 제사를 혼자 지냈기 때문에 상속에서 우대를 받았어요."},
+   {type:"mc",hard:true,q:"놀부가 부자인 까닭을 조선 후기 시대상에 맞게 가장 바르게 설명한 친구는 누구일까요?",
+    opts:["지민: 향촌 사회에 성리학적 규범이 자리 잡아 큰아들이 제사를 혼자 맡았고, 그래서 상속에서 우대를 받았어.","서준: 성리학적 규범 때문에 아들딸이 제사를 돌아가며 맡았고, 그래서 놀부가 재산을 많이 받았어.","하은: 큰아들이 제사를 혼자 맡았지만, 재산은 아들딸이 똑같이 나눠 받았어.","도윤: 불교의 가르침이 퍼져 큰아들이 제사를 맡았고, 그래서 상속에서 우대를 받았어."],a:0,
+    hint:"세 가지가 모두 맞아야 해요. 원인(무엇이 자리 잡았나), 제사(누가 맡았나), 결과(상속)",e:"성리학적 규범 정착 → 큰아들이 제사를 혼자 맡음 → 상속에서 우대. 그래서 큰아들 놀부가 부자였어요."}
   ]},
  {chap:"둘째 마당",name:"주걱으로 뺨을 맞은 흥부",topic:"조선 후기 혼인과 제사",art:"s2",
   movie:["배고픈 흥부가 형님 댁에 밥을 얻으러 갔어요.","형수는 밥주걱으로 흥부의 뺨을 철썩!","놀부네로 시집온 형수, 그 시절 혼인은 어땠을까요?"],
@@ -627,16 +632,16 @@ var PAGES=[
    {type:"mc",q:"‘시집간다’가 자리 잡은 뒤, 집안은 어느 쪽을 중심으로 바뀌었을까요?",opts:["어머니 쪽 중심","아버지 쪽 중심","모든 쪽이 균형 잡힌 집안","사위 쪽 중심"],a:1,
     hint:"여자가 남편의 집, 곧 남편 아버지의 집에 들어가 살게 되었어요.",e:"조선 중기에는 모든 쪽이 균형 잡힌 집안이었지만, 후기에는 아버지 쪽 중심 집안이 되었어요."},
    {type:"ox",q:"조선 후기에는 집안의 제사를 큰아들이 혼자 지냈다.",a:true,
-    hint:"놀부네 집에서 제사를 맡은 사람은 누구였을까요?",e:"조선 후기에는 큰아들이 혼자 제사를 지냈어요(큰아들 단독 봉사)."},
-   {type:"mc",q:"아들이 없는 집안은 대를 잇기 위해 어떻게 했을까요?",opts:["딸이 제사를 맡았다","같은 성씨의 친족 가운데 한 명을 양자로 들였다","사위가 성을 바꾸었다","제사를 그만 지냈다"],a:1,
-    hint:"‘양자’는 다른 집 아들을 데려와 자기 아들로 삼는 것이에요.",e:"대를 잇기 위해 같은 성씨 친족 가운데 한 명을 양자로 들였어요."},
-   {type:"blanks",q:"낱말 도장을 빛나는 빈칸부터 차례로 눌러 한 줄 요약을 완성하세요.",text:"조선 후기, 향촌 사회에 [성리학]적 규범이 정착되어, 제사를 [큰아들]이 혼자 지냈고, 이로 인해 [상속]에서 우대를 받았다.",extra:["불교","막내아들","딸","과거"],
-    hint:"이 마당에서 배운 낱말이에요. 빛나는 빈칸 앞뒤를 다시 읽어 보세요.",e:"조선 후기 가족 제도의 변화를 한 줄로 정리했어요."}
+    hint:"놀부네 집에서 제사를 맡은 사람은 누구였을까요?",e:"조선 후기에는 큰아들이 혼자 제사를 지냈어요."},
+   {type:"mc",q:"아들이 없는 집안은 대를 잇기 위해 어떻게 했을까요?",opts:["딸이 제사를 맡았다","같은 성씨의 친족 가운데 한 명을 아들로 들였다","사위가 성을 바꾸었다","제사를 그만 지냈다"],a:1,
+    hint:"대를 잇는다는 것은 집안의 성씨를 이어 간다는 뜻이에요.",e:"같은 성씨 친족 가운데 한 명을 양자로 들여 대를 이었어요."},
+   {type:"blanks",hard:true,q:"조선 후기 가족 제도의 변화를 한 줄로 정리해 보세요.",text:"조선 후기, 향촌 사회에 [성리학]적 규범이 정착되어, 제사를 [큰아들]이 혼자 지냈고, 이로 인해 [상속]에서 우대를 받았다.",extra:["불교","막내아들","딸","혼인"],
+    hint:"원인 → 제사 → 결과 순서예요. 이 마당에서 배운 낱말을 떠올려 보세요.",e:"성리학적 규범이 자리 잡으면서 큰아들 중심의 가족 제도가 만들어졌어요."}
   ]},
  {chap:"셋째 마당",name:"제비 다리를 고친 흥부",topic:"서민 문화의 배경과 한글 소설",art:"s3",
   movie:["봄날, 흥부네 처마 밑 제비가 둥지에서 떨어졌어요.","흥부는 부러진 다리를 정성껏 동여매 주었지요.","이 이야기를 즐겨 읽고 들은 사람들은 누구였을까요?"],
   qs:[
-   {type:"tap",img:"seodang",cap:"김홍도 「서당」",q:"훈장님께 혼나 울고 있는 아이를 찾아 눌러 보세요.",spot:[30,38,16,21],decoys:[[50,12,30,34],[44,71,17,22],[68,44,22,20],[8,26,24,30]],
+   {type:"tap",img:"seodang",cap:"김홍도 「서당」",q:"이 그림에서 훈장님께 혼나 울고 있는 아이는 어디 있을까요?",how:"그림 속 우는 아이를 손가락으로 직접 눌러 보세요. 맞으면 초록 테두리가 생겨요.",spot:[30,38,16,21],decoys:[[50,12,30,34],[44,71,17,22],[68,44,22,20],[8,26,24,30]],
     hint:"훈장님 책상 옆에서 손으로 눈물을 닦고 있는 아이를 찾아보세요.",e:"훈장님 앞에서 우는 아이와 웃는 친구들, 조선 후기 서당의 모습이에요."},
    {type:"multi",q:"조선 후기에 서민 문화가 발달한 배경을 모두 골라 보세요.",opts:["서민의 경제력 향상","서당 보급","한글을 쓰는 사람 증가","과거 시험 폐지","양반 수의 감소"],a:[0,1,2],
     hint:"정답은 3개예요. 돈, 배움, 글자와 관련된 것을 떠올려 보세요.",e:"서민의 경제력이 커지고, 서당이 늘고, 한글을 쓰는 사람이 많아지면서 서민 문화가 발달했어요."},
@@ -644,37 +649,37 @@ var PAGES=[
     hint:"춘향과 이몽룡의 이야기를 떠올려 보세요.",e:"한글 소설에는 서민들이 바라던 세상과 생각이 담겨 있어요."},
    {type:"mc",img:"reading",cap:"윤덕희 「책 읽는 여인」",q:"이 그림처럼 조선 후기에 책을 즐겨 읽는 사람이 늘어난 까닭으로 알맞은 것은?",opts:["한글을 읽고 쓰는 사람이 늘어서","책이 모두 한자로만 쓰여서","서당이 모두 문을 닫아서","과거 시험이 없어져서"],a:0,
     hint:"앞에서 고른 서민 문화의 배경 가운데 ‘글자’와 관련된 것이에요.",e:"한글을 아는 사람이 늘면서 여성과 서민도 책을 즐겨 읽게 되었어요."},
-   {type:"ox",q:"흥부전은 한글 소설이다.",a:true,
-    hint:"흥부 이야기가 ‘글’로 전해진 방법을 떠올려 보세요.",e:"흥부 이야기는 한글 소설 「흥부전」으로 널리 읽혔어요."}
+   {type:"mc",hard:true,q:"한글 소설이 서민들에게 널리 읽힐 수 있었던 까닭으로 가장 알맞은 것은?",opts:["한자를 몰라도 읽을 수 있고, 서민들의 바람과 생각이 담겨 있어서","왕이 모든 백성에게 한글 소설을 읽도록 명령해서","한글 소설은 양반만 읽을 수 있도록 정해져 있어서","서당에서 한자는 가르치지 않고 한글 소설만 가르쳐서"],a:0,
+    hint:"‘한글’은 누구에게 쉬운 글자였을까요? 「홍길동전」·「춘향전」에 담긴 이야기도 떠올려 보세요.",e:"한글로 쓰여 읽기 쉽고, 차별 없는 세상과 신분을 뛰어넘은 사랑 같은 서민의 바람이 담겨 있었어요."}
   ]},
  {chap:"넷째 마당",name:"슬근슬근 박 타기",topic:"판소리",art:"s4",
   movie:["강남에서 돌아온 제비가 박씨 한 알을 물어 왔어요.","“슬근슬근 톱질이야!” 박을 타자 금은보화가 와르르!","이 노랫가락은 어떻게 오늘날까지 전해졌을까요?"],
   qs:[
-   {type:"tap",img:"pyeongyang",cap:"「평양도」 10폭 병풍 일부",q:"소리꾼과 고수가 판소리를 하는 장면을 찾아 눌러 보세요.",spot:[32,33,20,36],decoys:[[57,30,21,36],[8,28,22,40],[0,0,28,24],[70,0,30,24]],
-    hint:"그림 가운데 노란 돗자리 위, 부채를 든 사람과 북을 든 사람을 찾아보세요.",e:"부채를 든 소리꾼과 북을 치는 고수가 판소리를 하고, 많은 사람이 구경하고 있어요."},
-   {type:"match",q:"판소리를 하는 두 사람과 하는 일을 짝지어 보세요.",left:["고수","소리꾼"],right:["북을 치며 장단을 맞춘다","노래하고 말하며 이야기를 들려준다"],a:[0,1],
-    hint:"고수의 ‘고(鼓)’는 ‘북’이라는 뜻이에요.",e:"소리꾼이 노래하면 고수가 북장단을 맞추고 “얼씨구!” 추임새를 넣어요."},
-   {type:"match",q:"흥부 이야기가 전해진 두 방법을 짝지어 보세요.",left:["「흥보가」","「흥부전」"],right:["판소리","한글 소설"],a:[0,1],
-    hint:"‘가(歌)’는 ‘노래’라는 뜻이에요.",e:"흥부 이야기는 판소리 「흥보가」로 불리고, 한글 소설 「흥부전」으로 읽혔어요."},
+   {type:"tap",img:"pyeongyang",cap:"「평양도」 10폭 병풍 일부",q:"이 그림에서 판소리 공연을 하는 장면은 어디일까요?",how:"부채를 든 소리꾼과 북을 든 고수가 있는 곳을 손가락으로 직접 눌러 보세요. 맞으면 초록 테두리가 생겨요.",spot:[32,33,20,36],decoys:[[57,30,21,36],[8,28,22,40],[0,0,28,24],[70,0,30,24]],
+    hint:"그림 가운데 노란 돗자리 위를 살펴보세요.",e:"부채를 든 소리꾼과 북을 치는 고수가 판소리를 하고, 많은 사람이 구경하고 있어요."},
+   {type:"match",q:"판소리를 하는 두 사람과 하는 일을 짝지어 보세요.",left:["고수","소리꾼"],right:["북을 치며 장단을 맞춘다","노래, 말, 몸짓으로 이야기를 들려준다"],a:[0,1],
+    hint:"방금 그림에서 북을 들고 있던 사람이 고수예요.",e:"한 명의 소리꾼이 고수의 북장단에 맞추어 노래, 말, 몸짓으로 긴 이야기를 들려줘요."},
+   {type:"multi",hard:true,q:"다음 가운데 판소리 작품을 모두 골라 보세요.",opts:["춘향가","심청가","흥부가","수궁가","적벽가","홍길동전","아리랑"],a:[0,1,2,3,4],
+    hint:"정답은 5개예요. 이름이 ‘노래’를 뜻하는 ‘가’로 끝나는 것을 찾아보세요.",e:"춘향가, 심청가, 흥부가, 수궁가, 적벽가가 오늘날 전해지는 판소리예요. 「홍길동전」은 한글 소설이에요."},
    {type:"ox",q:"판소리는 궁궐 안에서 왕만 즐길 수 있었다.",a:false,
-    hint:"방금 찾은 「평양도」 속 판소리는 어디에서, 누가 보고 있었나요?",e:"판소리는 바깥 마당에서 많은 사람이 함께 즐겼어요."},
-   {type:"blanks",q:"낱말 도장을 빛나는 빈칸부터 차례로 눌러 한 줄 요약을 완성하세요.",text:"조선 후기 한글 소설, 판소리 등의 [서민] 문화가 꽃피었다. 흥부 이야기를 노래로 들려준 것은 [판소리], 글로 읽게 한 것은 [한글 소설]이다.",extra:["양반","왕실","한문 소설","탈춤"],
-    hint:"‘노래’와 ‘글’이라는 말에 밑줄을 그어 보세요.",e:"한글 소설과 판소리 덕분에 흥부 이야기가 우리에게 전해졌어요."}
+    hint:"방금 찾은 「평양도」 속 판소리는 어디에서, 누가 보고 있었나요?",e:"판소리는 바깥 마당과 저잣거리에서 많은 사람이 함께 즐겼어요."},
+   {type:"blanks",q:"오늘 배운 내용을 한 줄로 정리해 보세요.",text:"조선 후기 [한글 소설], [판소리] 등의 [서민] 문화가 꽃피면서 흥부의 이야기가 우리에게 전해졌다.",swap:[0,1],extra:["양반","왕실","탈춤","한문 소설"],
+    hint:"흥부 이야기를 ‘글’로 읽게 한 것과 ‘노래’로 듣게 한 것을 떠올려 보세요.",e:"한글 소설과 판소리 덕분에 흥부 이야기가 우리에게 전해졌어요."}
   ]},
- {chap:"다섯째 마당",name:"놀부도 박을 탔지만",topic:"풍속화와 민화",art:"s5",
+ {chap:"다섯째 마당",name:"놀부도 박을 탔지만",topic:"판소리와 한글 소설의 관계",art:"s5",
   art2:"s6",art2At:5000,
   movie:["샘이 난 놀부도 박을 탔지만, 도깨비가 튀어나와 쫄딱 망했어요.","빈털터리가 된 놀부는 흥부를 찾아가 무릎을 꿇었어요.","“아우야, 내 욕심이 지나쳤다. 내가 잘못했다!”","흥부는 형을 일으켜 세우고 재물을 나누었어요.","그 뒤로 두 형제는 사이좋게 지냈답니다."],
   qs:[
-   {type:"match",imgs:["mudong","ssireum","yeonso"],q:"그림과 그린 화가를 짝지어 보세요.",left:["「무동」","「씨름」","「연소답청」"],right:["김홍도","신윤복"],a:[0,0,1],
-    hint:"말을 탄 양반과 여인들이 봄나들이를 가는 그림은 다른 화가의 작품이에요.",e:"「무동」과 「씨름」은 김홍도, 「연소답청」은 신윤복의 그림이에요."},
-   {type:"match",q:"두 화가가 주로 그린 모습을 짝지어 보세요.",left:["김홍도","신윤복"],right:["농촌 서민의 일상","양반의 풍류, 여성의 생활"],a:[0,1],
-    hint:"씨름판처럼 서민이 모인 장면을 그린 화가는 누구였나요?",e:"김홍도는 서민의 일상을, 신윤복은 양반의 풍류와 여성의 생활을 그렸어요."},
-   {type:"ox",q:"신윤복은 농촌 서민의 일상이 담긴 풍속화를 주로 그렸다.",a:false,
-    hint:"「연소답청」 속 인물들은 농사를 짓고 있었나요?",e:"농촌 서민의 일상을 주로 그린 화가는 김홍도예요."},
-   {type:"mc",q:"조선 후기 서민들이 민화를 그려 집 안에 둔 까닭으로 알맞은 것은?",opts:["복을 빌고 집을 꾸미려고","왕실 행사를 기록하려고","과거 시험을 보려고","외국에 팔려고"],a:0,
-    hint:"까치, 호랑이, 꽃 같은 민화는 좋은 일이 생기기를 바라는 마음을 담았어요.",e:"서민들은 민화를 그려 복을 빌고 집 안을 꾸몄어요."},
-   {type:"mc",q:"민화는 대부분 ‘작자 미상’이에요. ‘작자 미상’의 뜻은?",opts:["그린 사람을 알 수 없다","이름난 화원이 그렸다","왕이 직접 그렸다","외국 화가가 그렸다"],a:0,
-    hint:"‘미상(未詳)’은 ‘자세히 알지 못한다’는 뜻이에요.",e:"민화는 이름이 알려지지 않은 서민 화가들이 많이 그렸어요."}
+   {type:"match",q:"흥부 이야기가 전해진 두 가지 모습을 짝지어 보세요.",left:["「흥부가」","「흥부전」"],right:["판소리","한글 소설"],a:[0,1],
+    hint:"‘가’는 노래, ‘전’은 이야기책이라는 뜻이에요.",e:"흥부 이야기는 판소리 「흥부가」로 불리고, 한글 소설 「흥부전」으로 읽혔어요."},
+   {type:"mc",q:"소리꾼이 저잣거리에서 판소리를 부를 때, 관중의 반응에 따라 판소리는 어떻게 되었을까요?",opts:["재미있는 대목이 더해졌다","공연이 금지되었다","노래가 모두 한자로 바뀌었다","이야기가 점점 짧아져 사라졌다"],a:0,
+    hint:"관중이 웃고 박수 친 대목을 소리꾼은 어떻게 했을까요?",e:"관중의 반응에 따라 재미있는 대목이 더해지며 이야기가 풍부해졌어요."},
+   {type:"ox",q:"판소리와 한글 소설은 서로 영향을 주고받으며 함께 발전했다.",a:true,
+    hint:"PPT ‘둘의 관계’에서 판소리와 한글 소설 사이의 화살표를 떠올려 보세요.",e:"판소리 내용은 한글 소설로 기록되고, 한글 소설은 다시 판소리 공연에 쓰이며 서로를 풍부하게 했어요."},
+   {type:"blanks",hard:true,q:"흥부 이야기가 전해진 과정을 순서대로 완성해 보세요.",text:"소리꾼이 [저잣거리]에서 판소리를 부르면 [관중]의 반응에 따라 재미있는 대목이 더해졌다. 이 내용이 [한글 책]으로 기록되었고, 다시 소리꾼들의 [공연 대본]이 되었다.",extra:["궁궐","왕","한문 책","족보"],
+    hint:"공연 장소 → 보는 사람 → 기록 → 다시 공연 순서예요.",e:"판소리와 한글 소설은 공연과 기록을 오가며 함께 발전했어요."},
+   {type:"blanks",q:"오늘 배운 내용을 최종 정리해 보세요.",text:"첫째, 놀부는 [큰아들]로 집에서 [제사]를 담당하여 많은 재산을 상속받았다. 둘째, 흥부와 놀부 이야기는 [판소리]와 [한글 소설]로 전해졌다.",swap:[2,3],extra:["막내아들","농사","탈춤","한문 소설"],
+    hint:"오늘 수업 Part 1과 Part 2의 한 줄 요약을 떠올려 보세요.",e:"놀부는 큰아들이라 부자였고, 흥부 이야기는 판소리와 한글 소설로 전해졌어요."}
   ]}
 ];
 
@@ -732,7 +737,7 @@ function renderMovie(){
   app.innerHTML='<div class="fade col"><div class="movie"><div class="mv-top"><span class="lab light">'+esc(p.chap)+'</span><span class="mv-ttl">'+esc(p.name)+'</span></div>'+
    '<div class="frame mv"><svg viewBox="0 0 400 400" class="scene sc-'+p.art+'" role="img" aria-label="'+esc(p.name)+' 장면">'+ART[p.art]()+'</svg></div>'+
    '<div class="subs" id="subs"></div></div>'+
-   '<div class="row center"><button class="btn" id="again">↻ 다시 보기</button><button class="btn main big" id="next" disabled>문제 풀러 가기 →</button></div></div>';
+   '<div class="row center"><button class="btn" id="again">↻ 다시 보기</button><button class="btn main big" id="next" disabled>문제 풀러 가기 →</button></div><p class="soft center">이야기가 끝나면 ‘문제 풀러 가기’ 버튼이 켜져요.</p></div>';
   play();
   function play(){
     clearT();var svg=app.querySelector(".mv svg");svg.innerHTML=ART[p.art]();svg.setAttribute("class","scene sc-"+p.art);
@@ -758,12 +763,12 @@ function head(){
 function imgBox(k,cap,id){return '<figure class="pic"><div class="pic-in" id="'+(id||"")+'"><img src="'+IMG[k]+'" alt="'+esc(cap||"")+'"></div>'+(cap?'<figcaption>'+esc(cap)+'</figcaption>':'')+'</figure>'}
 function renderQuiz(){
   var p=PAGES[S.page],q=p.qs[S.qi],st=S.st;
-  var h=head()+'<div class="fade col" id="sh"><div class="card qcard"><div class="lab">문제 '+(S.qi+1)+' / '+p.qs.length+'</div>';
-  if(q.src)h+='<blockquote class="src"><p>'+esc(q.src)+'</p><cite>— '+esc(q.srcBy)+'</cite></blockquote>';
+  var h=head()+'<div class="fade col" id="sh"><div class="card qcard"><div class="lab">문제 '+(S.qi+1)+' / '+p.qs.length+(q.hard?' <span class="hardtag">도전</span>':'')+'</div>';
+  if(q.src)h+='<blockquote class="src"><span class="srctag">사료</span><p>'+esc(q.src)+'</p><cite>— '+esc(q.srcBy)+'</cite></blockquote>';
   if(q.fig)h+=q.fig;
   if(q.img&&q.type!=="tap")h+=imgBox(q.img,q.cap);
   if(q.imgs)h+='<div class="trio">'+q.imgs.map(function(k,i){return imgBox(k,q.left[i])}).join("")+'</div>';
-  h+='<p class="task">'+esc(q.q)+'</p>';
+  h+='<p class="task">'+esc(q.q)+'</p>'+(S.solved?'':'<p class="how">👉 '+esc(q.type==="tap"?q.how:HOW[q.type])+'</p>');
   if(q.type==="mc"){if(!st.order){st.order=q.two?[0,1]:shuffle(q.opts.map(function(_,i){return i}));save()}
     h+='<div class="opts'+(q.two?" two":"")+'">'+st.order.map(function(k,n){var cls=S.solved&&k===q.a?" right":(st.out||[]).indexOf(k)>=0?" wrong":"";return '<button class="opt'+cls+'" data-k="'+k+'" '+(S.solved||(st.out||[]).indexOf(k)>=0?"disabled":"")+'><b>'+(q.two?"":(n+1)+".")+'</b>'+esc(q.opts[k])+'</button>'}).join("")+'</div>'}
   else if(q.type==="ox"){h+='<div class="oxs"><button class="ox o" data-v="1" '+(S.solved?"disabled":"")+'>O</button><button class="ox x" data-v="0" '+(S.solved?"disabled":"")+'>X</button></div>'}
@@ -771,12 +776,13 @@ function renderQuiz(){
   else if(q.type==="match"){st.sel=st.sel||q.left.map(function(){return -1});
     h+='<div class="match">'+q.left.map(function(l,i){return '<div class="mrow"><div class="ml">'+esc(l)+'</div><div class="mr">'+q.right.map(function(r,k){return '<button class="chip'+(st.sel[i]===k?" sel":"")+'" data-i="'+i+'" data-k="'+k+'" '+(S.solved?"disabled":"")+'>'+esc(r)+'</button>'}).join("")+'</div></div>'}).join("")+'</div>'+(S.solved?'':'<div class="row center"><button class="btn main" id="chk">짝 맞추기 확인</button></div>')}
   else if(q.type==="blanks"){var words=[];q.text.replace(/\[([^\]]+)\]/g,function(_,w){words.push(w)});st.n=st.n||0;if(S.solved)st.n=words.length;if(!st.bank){st.bank=shuffle(words.concat(q.extra));save()}
-    var bi=0;h+='<div class="note-book"><div class="nb-body">'+esc(q.text).replace(/\[([^\]]+)\]/g,function(_,w){var k=bi++;return k<st.n?'<span class="blank filled">'+w+'</span>':'<span class="blank'+(k===st.n?" cur":"")+'">&nbsp;</span>'})+'</div></div>'+
-     '<div class="words">'+st.bank.map(function(w,i){var used=words.slice(0,st.n).indexOf(w)>=0;return '<button class="word" data-i="'+i+'" '+(used||S.solved?"disabled":"")+'>'+esc(w)+'</button>'}).join("")+'</div>'}
-  else if(q.type==="tap"){h+='<div class="tapguide"><span class="ar">▼</span><span>그림을 손가락으로 톡 눌러 보세요!</span></div>'+imgBox(q.img,q.cap,"tapbox")}
+    var bi=0;st.fill=st.fill||[];h+='<div class="note-book"><div class="nb-body">'+esc(q.text).replace(/\[([^\]]+)\]/g,function(_,w){var k=bi++;return k<st.n?'<span class="blank filled">'+(st.fill[k]||w)+'</span>':'<span class="blank'+(k===st.n?" cur":"")+'">&nbsp;</span>'})+'</div></div>'+
+     '<div class="words">'+st.bank.map(function(w,i){var used=(S.solved?words:(st.fill||[]).slice(0,st.n)).indexOf(w)>=0;return '<button class="word" data-i="'+i+'" '+(used||S.solved?"disabled":"")+'>'+esc(w)+'</button>'}).join("")+'</div>'}
+  else if(q.type==="tap"){h+=imgBox(q.img,q.cap,"tapbox")}
   h+='<div class="fb'+(S.solved?" good":S.tries?" bad":"")+'" id="fb">'+fbText(q)+'</div>'+(S.solved?'<div class="row end"><button class="btn main big" id="nx">'+(S.qi<p.qs.length-1?"다음 문제 →":"글자 받기 →")+'</button></div>':'')+'</div></div>'+resetRow();
   app.innerHTML=h;bind(q,st);bindReset();
 }
+var HOW={mc:"알맞은 답을 하나 골라 누르세요.",ox:"문장이 맞으면 O, 틀리면 X를 누르세요.",multi:"정답이 여러 개예요. 알맞은 것을 모두 누른 뒤, 아래 ‘다 골랐어요’를 누르세요.",match:"줄마다 알맞은 것을 하나씩 누른 뒤, 아래 ‘짝 맞추기 확인’을 누르세요.",blanks:"노랗게 빛나는 빈칸부터 차례로, 아래 낱말 도장을 누르세요. 틀린 도장은 빈칸에 들어가지 않아요."};
 function fbText(q){
   if(S.solved)return '<b>정답이에요!</b> '+esc(q.e);
   if(!S.tries)return "";
@@ -799,7 +805,9 @@ function bind(q,st){
   if(q.type==="match"){each(".chip",function(b){b.onclick=function(){var i=+b.getAttribute("data-i"),k=+b.getAttribute("data-k");st.sel[i]=k;save();each('.chip[data-i="'+i+'"]',function(c){c.classList.toggle("sel",c===b)})}});
     $("chk").onclick=function(){if(st.sel.indexOf(-1)>=0){var f=$("fb");f.className="fb";f.textContent="아직 고르지 않은 짝이 있어요.";return}if(st.sel.every(function(k,i){return k===q.a[i]}))ok();else miss()}}
   if(q.type==="blanks"){var words=[];q.text.replace(/\[([^\]]+)\]/g,function(_,w){words.push(w)});
-    each(".word",function(b){b.onclick=function(){var w=st.bank[+b.getAttribute("data-i")];if(w===words[st.n]){st.n++;save();if(st.n>=words.length)ok();else renderQuiz()}else miss()}})}
+    each(".word",function(b){b.onclick=function(){var w=st.bank[+b.getAttribute("data-i")];st.fill=st.fill||[];
+      var sw=q.swap||[],okW=w===words[st.n]||(sw.indexOf(st.n)>=0&&sw.some(function(k){return words[k]===w})&&st.fill.indexOf(w)<0);
+      if(okW){st.fill[st.n]=w;st.n++;save();if(st.n>=words.length)ok();else renderQuiz()}else miss()}})}
   if(q.type==="tap"){var box=$("tapbox");
     box.querySelector("img").onclick=function(e){var r=box.getBoundingClientRect(),m=document.createElement("span");m.className="miss";m.style.left=(e.clientX-r.left)+"px";m.style.top=(e.clientY-r.top)+"px";box.appendChild(m);setTimeout(function(){m.remove()},700);miss()};
     q.decoys.concat([q.spot]).forEach(function(r,i,arr){var real=i===arr.length-1,b=document.createElement("button");b.className="hot";b.setAttribute("aria-label","그림 속 한 곳");
