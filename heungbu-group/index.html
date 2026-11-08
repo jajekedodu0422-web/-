@@ -116,6 +116,7 @@ button:focus-visible,textarea:focus-visible{outline:3px solid var(--red);outline
 /* 글자 얻기 */
 .reveal{position:fixed;inset:0;z-index:40;background:radial-gradient(circle at 50% 40%,#7a4a2c,#3a2214 70%);display:grid;place-items:center;overflow:auto;padding:16px}
 .rv-inner{display:grid;justify-items:center;gap:14px;text-align:center;max-width:620px}
+.rv-inner.wide{max-width:min(1000px,100%);width:100%}
 .rv-lbl{color:#f3d58c;font-size:17px;letter-spacing:.1em;animation:up .6s ease-out both}
 .rv-got{width:180px;height:180px;border:7px solid var(--red);border-radius:16px;background:#fbf5e8;color:var(--red);font-family:var(--display);font-size:130px;line-height:1;display:grid;place-items:center;transform:rotate(-6deg);animation:stamp .5s cubic-bezier(.3,1.6,.5,1) .4s both;box-shadow:0 0 40px rgba(226,179,60,.6)}
 @keyframes stamp{from{transform:scale(2.4) rotate(-14deg);opacity:0}to{transform:scale(1) rotate(-6deg);opacity:1}}
@@ -609,7 +610,7 @@ function mood(el,m){if(!el)return;[...el.classList].filter(c=>c.startsWith("mood
 <script>
 (function(){
 "use strict";
-var BUILD="1108a",KEY="heungbu-group-v2",TKEY="heungbu-group-teacher-v2";
+var BUILD="1108b",KEY="heungbu-group-v2",TKEY="heungbu-group-teacher-v2";
 var PUBLIC_URL="https://jajekedodu0422-web.github.io/-/heungbu-group/";
 var CODE="착하게살자";
 var IMG={sinhaeng:"img/sinhaeng.jpg",seodang:"img/seodang.jpg",reading:"img/reading.jpg",pyeongyang:"img/pyeongyang.jpg",ssireum:"img/ssireum.jpg",mudong:"img/mudong.jpg",yeonso:"img/yeonso.jpg"};
@@ -882,13 +883,14 @@ function renderReveal(t){
   app.innerHTML='<div class="fade col wide"><div class="center"><div class="lab">3학년 6반 · 발표 · 한마디 완성</div><h1 class="h1">다섯 글자를 모아라</h1><p class="soft">모둠이 어려웠던 문제를 발표하고 글자를 외치면, 그 모둠 버튼을 누르세요.</p></div>'+
    '<div class="slots5">'+CODE.split("").map(function(ch,i){var on=rv.indexOf(i+1)>=0;return '<div class="slot5'+(on?" on":"")+'"><span class="sg">'+(i+1)+'모둠 · '+PAGES[i].chap+'</span><span class="sl">'+(on?ch:"?")+'</span></div>'}).join("")+'</div>'+
    '<div class="row center">'+[1,2,3,4,5].map(function(g){var on=rv.indexOf(g)>=0;return '<button class="btn '+(on?"":"main")+' gbtn" data-g="'+g+'" '+(on?"disabled":"")+'>'+g+'모둠 발표 완료</button>'}).join("")+'</div>'+
-   (done?'<div class="card center"><div class="lab">흥부전이 전하는 한마디</div><div class="final">착하게 살자</div><p class="lead">착한 사람은 복을 받고 나쁜 사람은 벌을 받는다 — <b class="red">권선징악(勸善懲惡)</b></p><div class="row center"><button class="btn main big" id="joy">흥부네 잔치 보기</button></div></div>':'')+
+   (done?'<div class="card center"><div class="lab">흥부전이 전하는 한마디</div><div class="final">착하게 살자</div><p class="lead">착한 사람은 복을 받고 나쁜 사람은 벌을 받는다 — <b class="red">권선징악(勸善懲惡)</b></p><div class="row center"><button class="btn main big" id="joy">흥부전 끝 장면 보기</button></div></div>':'')+
    '<div class="row center"><button class="btn" id="back">← QR 배정판으로</button><button class="btn" id="undo">발표 하나 되돌리기</button></div></div>';
-  each(".gbtn",function(b){b.onclick=function(){t.revealed=(t.revealed||[]).concat([+b.getAttribute("data-g")]);tSave(t);renderReveal(t)}});
+  each(".gbtn",function(b){b.onclick=function(){t.revealed=(t.revealed||[]).concat([+b.getAttribute("data-g")]);tSave(t);renderReveal(t);if(t.revealed.length===5&&$("joy"))$("joy").click()}});
   $("back").onclick=function(){t.view="deal";tSave(t);renderTeacher()};
   $("undo").onclick=function(){t.revealed=(t.revealed||[]).slice(0,-1);tSave(t);renderReveal(t)};
   if($("joy"))$("joy").onclick=function(){
-    modal.innerHTML='<div class="reveal" role="dialog" aria-label="흥부네 잔치"><div class="rv-inner"><div class="frame endf"><svg viewBox="0 0 400 400">'+ART.end(true,5)+'</svg></div><div class="final light">착하게 살자!</div><div class="rv-sub">흥부 이야기는 판소리와 한글 소설로 오늘날까지 전해지고 있어요.</div><button class="btn main big" id="cgo">닫기</button></div></div>';
+    modal.innerHTML='<div class="reveal" role="dialog" aria-label="흥부전 끝 장면"><div class="rv-inner wide"><div class="film"><iframe id="endfilm" src="film.html?v='+BUILD+'&ch=end" title="흥부전 끝 장면 · 착하게 살자" allow="autoplay"></iframe></div><div class="rv-sub">흥부 이야기는 판소리와 한글 소설로 오늘날까지 전해지고 있어요.</div><div class="row center"><button class="btn" id="eagain">↻ 다시 보기</button><button class="btn main big" id="cgo">닫기</button></div></div></div>';
+    $("eagain").onclick=function(){var f=$("endfilm");try{f.contentWindow.postMessage({film:"replay"},"*")}catch(err){f.src=f.src}};
     $("cgo").onclick=function(){modal.innerHTML=""};
   };
 }
