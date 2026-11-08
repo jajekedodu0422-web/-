@@ -610,7 +610,7 @@ function mood(el,m){if(!el)return;[...el.classList].filter(c=>c.startsWith("mood
 <script>
 (function(){
 "use strict";
-var BUILD="1108b",KEY="heungbu-group-v2",TKEY="heungbu-group-teacher-v2";
+var BUILD="1108c",KEY="heungbu-group-v2",TKEY="heungbu-group-teacher-v2";
 var PUBLIC_URL="https://jajekedodu0422-web.github.io/-/heungbu-group/";
 var CODE="착하게살자";
 var IMG={sinhaeng:"img/sinhaeng.jpg",seodang:"img/seodang.jpg",reading:"img/reading.jpg",pyeongyang:"img/pyeongyang.jpg",ssireum:"img/ssireum.jpg",mudong:"img/mudong.jpg",yeonso:"img/yeonso.jpg"};
@@ -743,7 +743,7 @@ function renderIntro(){
 }
 
 /* ---------- 모둠: 짧은 이야기 영상 ---------- */
-var FILM_LEN=[6,6.5,6,6.5,7];
+var FILM_LEN=[10,10,10,10,10];
 function renderMovie(){
   var p=PAGES[S.page],ch=S.page+1;
   app.innerHTML='<div class="fade col"><div class="movie"><div class="mv-top"><span class="lab light">'+esc(p.chap)+'</span><span class="mv-ttl">'+esc(p.name)+'</span></div>'+
